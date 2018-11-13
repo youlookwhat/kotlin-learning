@@ -37,12 +37,22 @@ if(value is String)               检查类型
  - AndriodSdudio中使用：**"Setting(设置) - Plugins(插件) - Install JetBrains Plugin - Kotlin"**
 
 
-### Android 与 Kotlin 入门
+### 2.Kotlin基础
+
+> - 声明函数、变量、类、枚举以及类型
+> - Kotlin中的控制结构
+> - 智能转换
+> - 抛出和处理异常
+
+### a.Android 与 Kotlin 入门
 > https://www.kotlincn.net/docs/tutorials/kotlin-android.html
 
+1.将 Java 代码转换为 Kotlin:
+help - find action - Convert Java File to Kotlin File
 
+2.点击提示中的 立即同步（Sync Now）
 
-
+Kotlin有着极小的运行时文件体积：整个库的大小约 964KB（1.3.0 版本）。这意味着 Kotlin 对 apk 文件大小影响微乎其微。
 
 
 
