@@ -1,15 +1,15 @@
 # kotlin-learning
 
-> 学习书籍：[《Kotlin实战》][1]
-> GitHub：[JetBrains/kotlin][2]
-> Kotlin 语言中文站：https://www.kotlincn.net/docs/reference/android-overview.html
+>  - 学习书籍：[《Kotlin实战》][1]
+>  - GitHub：[JetBrains/kotlin][2]
+>  - Kotlin 语言中文站：https://www.kotlincn.net/docs/reference/android-overview.html
 
 ### 1.定义和目的
  - Kotlin和Java一样是一种静态类型的编程语言。编译时即可检查代码正确性。动态语言：Groovy,JRuby。
  - 根据上下问判断变量类型： val x=1
  - 性能、可靠性、可维护性、工具支持。
 
---
+---
 
 支持函数式编程风格，不强制使用：
 
@@ -18,7 +18,7 @@
  - 数据类，提供了创建不可变值对象的简明语法
  - 标准库中包含了丰富的API集合，让你用函数式编程风格操作对象和集合。
 
---
+---
 自动检查空指针：
 
  - val s: String? = null  可以为null，也会检查，禁止可能导致的空指针
@@ -31,7 +31,7 @@ if(value is String)               检查类型
   println(value.toUpperCase())    调用该类型的方法
 ```
 
---
+---
 
  - 源代码文件存放在后缀名为.kt的文件中，编辑器生成.class文件。
  - AndriodSdudio中使用：
