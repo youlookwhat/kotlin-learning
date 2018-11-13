@@ -34,8 +34,55 @@ if(value is String)               检查类型
 ---
 
  - 源代码文件存放在后缀名为.kt的文件中，编辑器生成.class文件。
- - AndriodSdudio中使用：
-  - plug-in manaeger(插件管理器)中：**"Setting(设置) - Plugins(插件) - Install JetBrains Plugin - Kotlin"**
+ - AndriodSdudio中使用：**"Setting(设置) - Plugins(插件) - Install JetBrains Plugin - Kotlin"**
+
+
+### Android 与 Kotlin 入门
+> https://www.kotlincn.net/docs/tutorials/kotlin-android.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
