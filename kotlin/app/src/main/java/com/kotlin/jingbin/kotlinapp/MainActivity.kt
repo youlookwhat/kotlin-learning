@@ -27,6 +27,38 @@ class MainActivity : AppCompatActivity() {
         Log.e("max", max(1, 2).toString())
         Log.e("max2", max2(10, 2).toString())
 
+
+        // ------------3.定义变量--------------------
+        /** 1. 可变变量与不可变变量*/
+        // 一次性赋值
+        val a: Int = 1 // 立即赋值
+        val b = 2     // 自动推断出Int的值
+        val c: Int     // 如果没有初始值类型不能省略
+        c = 3         // 明确赋值
+
+        // 可变变量：   注意是var
+        var x = 5
+        x += 1
+        Log.e("x", x.toString())
+
+        // 顶层赋值
+        val PI = 3.14    // val
+        var y = 0        // var
+        // 不用写在方法体外面
+        fun incrementX() {
+            y += 1
+            Log.e("y", y.toString())
+        }
+        incrementX()
+
+        /** 2. 使用字符串模板*/
+        var a1 = 1
+        val s1 = "a is $a1"
+        a1 = 3
+        // 模板中的任意表达式
+        val s2 = "${s1.replace("is", "was")},but no is $a1"
+        Log.e("s2", s2)
+
     }
 
     // 求和
@@ -42,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         Log.e("logSum", (a + b).toString())
     }
 
-    // Unit 返回类型可以省略
+    // Unit 返回类型可以省略(类型推导)
     fun logSum2(a: Int, b: Int) {
         Log.e("logSum2", (a + b).toString())
     }

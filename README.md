@@ -44,7 +44,58 @@ if(value is String)               检查类型
 > - 智能转换
 > - 抛出和处理异常
 
-### a.Android 与 Kotlin 入门
+[函数学习](https://github.com/youlookwhat/kotlin-learning/blob/master/kotlin/app/src/main/java/com/kotlin/jingbin/kotlinapp/MainActivity.kt)
+
+#### 函数：
+
+```java
+/**
+     *  求最大值
+     * if是表达式而不是语句，表达式有值，语句没有。
+     * java中所有的控制结构都是语句
+     * kotlin中除了循环以外大多数控制结构都是表达式
+     */
+    private fun max(a: Int, b: Int): Int {
+        return if (a > b) a else b
+    }
+
+    /**
+     * 如果函数体写在花括号中，我们说这个函数有代码块体。
+     * 如果直接返回了一个表达式体，他就有表达式体。
+     */
+    fun max2(a: Int, b: Int): Int = if (a > b) a else b
+```
+
+#### 变量：
+##### 可变变量和不可变变量
+
+ - val - 不可变引用。 相当于Java的final变量。
+ - var - 可变引用。   普通的Java变量。
+
+在定义了val变量的代码块执行期间，val变量只能进行唯一一次初始化。但是，如果编译器能确保只有唯一一条初始化语句被执行，可以根据条件使用不同的值来初始化它：
+val message:String
+if (CanPerformOperation()){
+   message = "Success"
+   // ...
+} else{
+   message = "Failed"
+}
+
+注意：尽管val引用自身是不可变的，但是它指向的对象可能是可变的。例如：
+val languages = arrayListOf("Java")  // 声明不可变引用
+languages.add("Kotlin")              // 改变引用指向的对象
+
+错误：类型不匹配
+var answer = 42
+answer = "no answer"
+
+##### 字符串模板
+var a = 1
+
+
+### 网址学习
+
+Android 与 Kotlin 入门：
 > https://www.kotlincn.net/docs/tutorials/kotlin-android.html
 
 1.将 Java 代码转换为 Kotlin:
