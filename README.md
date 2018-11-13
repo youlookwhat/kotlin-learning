@@ -54,9 +54,26 @@ help - find action - Convert Java File to Kotlin File
 
 Kotlin有着极小的运行时文件体积：整个库的大小约 964KB（1.3.0 版本）。这意味着 Kotlin 对 apk 文件大小影响微乎其微。
 
+---
 
+Kotlin Android 扩展:
 
+开发者仅需要在模块的 build.gradle 文件中启用 Gradle 安卓扩展插件即可：
 
+```
+apply plugin: 'kotlin-android-extensions'
+```
+导入合成属性
+仅需要一行即可非常方便导入指定布局文件中所有控件属性：
+
+```
+import kotlinx.android.synthetic.main.＜布局＞.*
+```
+
+将有一个名为 hello 的属性：
+```
+activity.hello.text = "Hello World!"
+```
 
 
 
