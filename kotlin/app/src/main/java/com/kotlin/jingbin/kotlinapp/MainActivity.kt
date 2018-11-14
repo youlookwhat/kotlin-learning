@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         a1 = 3
         // 模板中的任意表达式
         val s2 = "${s1.replace("is", "was")},but no is $a1"
+        // a was 1, but now is 3
         Log.e("s2", s2)
 
     }

@@ -90,8 +90,21 @@ var answer = 42
 answer = "no answer"
 
 ##### 字符串模板
-var a = 1
+```java
+var a1 = 1
+        val s1 = "a is $a1"
+        a1 = 3
+        // 模板中的任意表达式
+        val s2 = "${s1.replace("is", "was")},but no is $a1"
+        Log.e("s2", s2)
+        
+// a was 1, but now is 3
+```
 
+和许多脚本语言一样，只需要在变量名称前加上 $ ，就可以在字符串字面值中引用局部变量。
+引用"$"需要转义“\$”
+
+##### 类和属性
 
 ### 网址学习
 
@@ -126,7 +139,7 @@ import kotlinx.android.synthetic.main.＜布局＞.*
 activity.hello.text = "Hello World!"
 ```
 
-
+[变量](https://www.kotlincn.net/docs/reference/basic-syntax.html)
 
 
 
