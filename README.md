@@ -1,6 +1,6 @@
 # kotlin-learning
 
->  - 学习书籍：[《Kotlin实战》][1]
+>  - 书籍：[《Kotlin实战》][1]
 >  - GitHub：[JetBrains/kotlin][2]
 >  - Kotlin 语言中文站：https://www.kotlincn.net/docs/reference/android-overview.html
 
@@ -49,7 +49,7 @@ if(value is String)               检查类型
 #### 函数：
 
 ```java
-/**
+	/**
      *  求最大值
      * if是表达式而不是语句，表达式有值，语句没有。
      * java中所有的控制结构都是语句
@@ -73,6 +73,8 @@ if(value is String)               检查类型
  - var - 可变引用。   普通的Java变量。
 
 在定义了val变量的代码块执行期间，val变量只能进行唯一一次初始化。但是，如果编译器能确保只有唯一一条初始化语句被执行，可以根据条件使用不同的值来初始化它：
+
+```java
 val message:String
 if (CanPerformOperation()){
    message = "Success"
@@ -80,14 +82,18 @@ if (CanPerformOperation()){
 } else{
    message = "Failed"
 }
+```
 
 注意：尽管val引用自身是不可变的，但是它指向的对象可能是可变的。例如：
+
+```java
 val languages = arrayListOf("Java")  // 声明不可变引用
 languages.add("Kotlin")              // 改变引用指向的对象
+```
 
 错误：类型不匹配
-var answer = 42
-answer = "no answer"
+```var answer = 42
+answer = "no answer"```
 
 ##### 字符串模板
 ```java
