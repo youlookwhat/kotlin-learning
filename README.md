@@ -4,7 +4,7 @@
 >  - GitHub：[JetBrains/kotlin][2]
 >  - Kotlin 语言中文站：https://www.kotlincn.net/docs/reference/android-overview.html
 
-### 1.定义和目的
+## 1.定义和目的
  - Kotlin和Java一样是一种静态类型的编程语言。编译时即可检查代码正确性。动态语言：Groovy,JRuby。
  - 根据上下问判断变量类型： val x=1
  - 性能、可靠性、可维护性、工具支持。
@@ -37,7 +37,7 @@ if(value is String)               检查类型
  - AndriodSdudio中使用：**"Setting(设置) - Plugins(插件) - Install JetBrains Plugin - Kotlin"**
 
 
-### 2.Kotlin基础
+## 2.Kotlin基础
 
 > - 声明函数、变量、类、枚举以及类型
 > - Kotlin中的控制结构
@@ -46,7 +46,8 @@ if(value is String)               检查类型
 
 [函数学习](https://github.com/youlookwhat/kotlin-learning/blob/master/kotlin/app/src/main/java/com/kotlin/jingbin/kotlinapp/MainActivity.kt)
 
-#### 函数：
+### 函数和变量
+#### 函数
 
 ```kotlin
 	/**
@@ -66,7 +67,7 @@ if(value is String)               检查类型
     fun max2(a: Int, b: Int): Int = if (a > b) a else b
 ```
 
-#### 变量：
+#### 变量
 ##### 可变变量和不可变变量
 
  - val - 不可变引用。 相当于Java的final变量。
@@ -98,9 +99,9 @@ var answer = 42
 answer = "no answer"
 ```
 
-##### 字符串模板
+#### 字符串模板
 ```kotlin
-var a1 = 1
+		var a1 = 1
         val s1 = "a is $a1"
         a1 = 3
         // 模板中的任意表达式
@@ -113,9 +114,47 @@ var a1 = 1
 和许多脚本语言一样，只需要在变量名称前加上 $ ，就可以在字符串字面值中引用局部变量。
 引用"$"需要转义``“\$”``
 
-##### 类和属性
+### 类和属性
+#### 类
+```java
+public class Person {
+    
+    private final String name;
 
-### 网址学习
+    public Person(String name) {
+        this.name = name;
+    }
+}
+```
+
+--->
+
+```java
+class Person(private val name: String)
+```
+**在Kotlin中，public是默认的可见性，所以你能省略它。**
+
+#### 属性
+```java
+class PersonProperty {
+
+    // 只读属性：生成一个字段和一个简单的getter
+    val name: String = "kotlin_hahaha"
+
+    // 可写属性：一个字段、一个getter和一个setter
+    var isMarried: Boolean = false
+
+    fun set() {
+        isMarried = true
+    }
+}
+```
+
+#### 自定义属性
+
+
+
+## 网址学习
 
 Android 与 Kotlin 入门：
 > https://www.kotlincn.net/docs/tutorials/kotlin-android.html
