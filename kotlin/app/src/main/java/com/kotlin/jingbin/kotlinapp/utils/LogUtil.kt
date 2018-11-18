@@ -4,9 +4,18 @@ import android.util.Log
 
 /**
  * Created by jingbin on 2018/11/18.
+ * 静态方法使用object
  */
 
-class LogUtil {
+object LogUtil {
+
+    fun e(message: Boolean) {
+        Log.e("jing", message.toString())
+    }
+
+    fun e(message: Int) {
+        Log.e("jing", message.toString())
+    }
 
     fun e(message: String) {
         Log.e("jing", message)

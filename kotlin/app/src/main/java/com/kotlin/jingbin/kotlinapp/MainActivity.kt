@@ -5,6 +5,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.kotlin.jingbin.kotlinapp.classproperty.Rectangle
+import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 自定义访问器
+        LogUtil.e(Rectangle(12, 12).isSquare)
 
         // 1.hello world
         println("hello world kotlin!")
