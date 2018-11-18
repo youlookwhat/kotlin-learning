@@ -101,14 +101,13 @@ answer = "no answer"
 
 #### 字符串模板
 ```kotlin
-		var a1 = 1
+        var a1 = 1
         val s1 = "a is $a1"
         a1 = 3
         // 模板中的任意表达式
         val s2 = "${s1.replace("is", "was")},but no is $a1"
+        // a was 1, but now is 3
         Log.e("s2", s2)
-        
-// a was 1, but now is 3
 ```
 
 和许多脚本语言一样，只需要在变量名称前加上 $ ，就可以在字符串字面值中引用局部变量。
@@ -116,6 +115,7 @@ answer = "no answer"
 
 ### 类和属性
 #### 类
+在Kotlin中，public是默认的可见性，所以你能省略它。
 ```java
 public class Person {
     
@@ -132,7 +132,6 @@ public class Person {
 ```java
 class Person(private val name: String)
 ```
-**在Kotlin中，public是默认的可见性，所以你能省略它。**
 
 #### 属性
 ```java
