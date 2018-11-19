@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 自定义访问器
-        LogUtil.e(Rectangle(12, 12).isSquare)
 
         // 1.hello world
         println("hello world kotlin!")

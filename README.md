@@ -149,7 +149,7 @@ class PersonProperty {
 }
 ```
 
-#### 自定义属性
+#### 自定义访问器
 ```java
 /**
  * Created by jingbin on 2018/11/18.
@@ -169,6 +169,43 @@ class Rectangle(val height: Int, val width: Int) {
 
 }
 ```
+
+#### Kotlin源码布局：目录和包
+> 1.把类和函数的声明放在包中，可以同级
+
+```kotlin
+class Rectangle(val height: Int, val width: Int) {
+
+    // 函数表达式 可以赋值
+    val isSquare: Boolean
+    // 声明属性的getter
+        get() {
+            return height == width
+        }
+
+}
+
+fun createRandomRectangle(): Rectangle {
+    val random = Random()
+    return Rectangle(random.nextInt(), random.nextInt())
+}
+```
+
+Kotlin不区分导入的是类还是函数，而且，它允许使用import关键字导入任何种类的声明。可以直接导入顶层函数的名称。
+
+> 2.导入其他包中的函数
+
+```kotlin
+// 导入函数的名称
+import com.kotlin.jingbin.kotlinapp.classproperty.createRandomRectangle
+// 导入其他包中的函数
+LogUtil.e(createRandomRectangle().isSquare)
+
+```
+
+包层级和java类似。
+
+### 表示和处理选择: 枚举和"when"
 
 
 

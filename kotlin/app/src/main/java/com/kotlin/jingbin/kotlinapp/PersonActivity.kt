@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import com.kotlin.jingbin.kotlinapp.classproperty.Person
 import com.kotlin.jingbin.kotlinapp.classproperty.PersonProperty
+import com.kotlin.jingbin.kotlinapp.classproperty.Rectangle
+import com.kotlin.jingbin.kotlinapp.classproperty.createRandomRectangle
+import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 class PersonActivity : AppCompatActivity() {
 
@@ -21,5 +24,11 @@ class PersonActivity : AppCompatActivity() {
         personProperty.isMarried = false
         // val 不能设置值
 //        personProperty.name = "haha"
+
+        // 自定义访问器
+        LogUtil.e(Rectangle(12, 12).isSquare)
+
+        // 导入其他包中的函数
+        LogUtil.e(createRandomRectangle().isSquare)
     }
 }

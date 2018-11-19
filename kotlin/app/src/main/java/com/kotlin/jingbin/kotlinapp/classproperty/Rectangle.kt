@@ -1,5 +1,7 @@
 package com.kotlin.jingbin.kotlinapp.classproperty
 
+import java.util.*
+
 /**
  * Created by jingbin on 2018/11/18.
  * 自定义访问器
@@ -16,4 +18,9 @@ class Rectangle(val height: Int, val width: Int) {
             return height == width
         }
 
+}
+
+fun createRandomRectangle(): Rectangle {
+    val random = Random()
+    return Rectangle(random.nextInt(), random.nextInt())
 }
