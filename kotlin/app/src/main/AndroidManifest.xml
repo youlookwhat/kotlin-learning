@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PersonActivity"></activity>
+        <activity android:name=".classproperty.PersonActivity" />
+        <activity android:name=".enumclass.EnumWhenActivity"></activity>
     </application>
 
 </manifest>

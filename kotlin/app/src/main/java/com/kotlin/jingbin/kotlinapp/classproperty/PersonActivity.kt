@@ -1,12 +1,9 @@
-package com.kotlin.jingbin.kotlinapp
+package com.kotlin.jingbin.kotlinapp.classproperty
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.kotlin.jingbin.kotlinapp.classproperty.Person
-import com.kotlin.jingbin.kotlinapp.classproperty.PersonProperty
-import com.kotlin.jingbin.kotlinapp.classproperty.Rectangle
-import com.kotlin.jingbin.kotlinapp.classproperty.createRandomRectangle
+import com.kotlin.jingbin.kotlinapp.R
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 class PersonActivity : AppCompatActivity() {
