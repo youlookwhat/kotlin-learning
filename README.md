@@ -206,6 +206,54 @@ LogUtil.e(createRandomRectangle().isSquare)
 包层级和java类似。
 
 ### 表示和处理选择: 枚举和"when"
+when结构，java中switch结构的替代品，但是更强大。智能转换。
+#### 枚举
+> 1.声明简单的枚举类
+
+```kotlin
+enum class SimpleColor {
+    RED, ORANGE
+}
+```
+
+> 2.声明一个带属性的枚举类
+
+```kotlin
+enum class Color(
+        // 声明枚举常量的属性
+        val r: Int, val g: Int, val b: Int) {
+    // 在每一个常量创建的时候指定属性值
+    RED(255, 0, 0),
+    ORANGE(255, 165, 0),
+    WELLOW(255, 255, 0),
+    GREEN(0, 255, 0),
+    BULE(0, 0, 255),
+    INDIGO(75, 0, 130),
+    VIILET(238, 130, 238);// 分号
+
+    fun rgb() = (r * 256 + g) * 256 + b
+}
+```
+
+> 3.使用“when”处理枚举类
+
+```kotlin
+ /**
+     * 使用when处理枚举类:
+     * 直接返回一个“when"表达式
+     */
+    fun getMnemonic(color: Color) = {
+        when (color) {
+            RED -> "Richard"
+            ORANGE -> "Of"
+            WELLOW -> "Haha"
+            // 合并多个选项
+            BULE, GREEN -> "望穿"
+            VIILET, INDIGO -> "秋水"
+        }
+    }
+```
+
 
 
 
