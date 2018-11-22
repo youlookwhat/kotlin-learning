@@ -1,9 +1,9 @@
-package com.kotlin.jingbin.kotlinapp.enumclass
+package com.kotlin.jingbin.kotlinapp.enumwhen.enumcode
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.kotlin.jingbin.kotlinapp.R
-import com.kotlin.jingbin.kotlinapp.enumclass.Color.*
+import com.kotlin.jingbin.kotlinapp.enumwhen.enumcode.Color.*
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 class EnumWhenActivity : AppCompatActivity() {
@@ -13,7 +13,7 @@ class EnumWhenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_enum_when)
 
         // 带属性的枚举类
-        LogUtil.e(BULE.rgb())
+        LogUtil.e(BLUE.rgb())
 
         println(getMnemonic(RED))
     }
@@ -26,10 +26,10 @@ class EnumWhenActivity : AppCompatActivity() {
         when (color) {
             RED -> "Richard"
             ORANGE -> "Of"
-            WELLOW -> "Haha"
+            YELLOW -> "Haha"
             // 合并多个选项
-            BULE, GREEN -> "望穿"
-            VIILET, INDIGO -> "秋水"
+            BLUE, GREEN -> "望穿"
+            VIOLET, INDIGO -> "秋水"
         }
     }
 }

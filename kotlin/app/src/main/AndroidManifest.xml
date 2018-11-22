@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".classproperty.PersonActivity" />
-        <activity android:name=".enumclass.EnumWhenActivity" />
-        <activity android:name=".website.srart.BasicActivity"></activity>
+        <activity android:name=".enumwhen.enumcode.EnumWhenActivity" />
+        <activity android:name=".website.srart.BasicActivity" />
+        <activity android:name=".enumwhen.whencode.WhenActivity"></activity>
     </application>
 
 </manifest>
