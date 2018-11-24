@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kotlin.jingbin.kotlinapp.website.srart.basic.BasicActivity">
+    tools:context="com.kotlin.jingbin.kotlinapp.website.srart.habit.HabitUsageActivity">
 
 </android.support.constraint.ConstraintLayout>

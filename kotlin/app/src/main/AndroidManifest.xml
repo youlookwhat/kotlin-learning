@@ -18,8 +18,9 @@
         </activity>
         <activity android:name=".classproperty.PersonActivity" />
         <activity android:name=".enumwhen.enumcode.EnumWhenActivity" />
-        <activity android:name=".website.srart.BasicActivity" />
-        <activity android:name=".enumwhen.whencode.WhenActivity"></activity>
+        <activity android:name=".website.srart.basic.BasicActivity" />
+        <activity android:name=".enumwhen.whencode.WhenActivity" />
+        <activity android:name=".website.srart.habit.HabitUsageActivity"></activity>
     </application>
 
 </manifest>

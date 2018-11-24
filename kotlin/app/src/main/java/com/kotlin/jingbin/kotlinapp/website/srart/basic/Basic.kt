@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.website.srart
+package com.kotlin.jingbin.kotlinapp.website.srart.basic
 
 /**
  * @author jingbin

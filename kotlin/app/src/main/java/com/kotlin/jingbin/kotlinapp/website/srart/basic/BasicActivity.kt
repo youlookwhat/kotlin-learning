@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.website.srart
+package com.kotlin.jingbin.kotlinapp.website.srart.basic
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
