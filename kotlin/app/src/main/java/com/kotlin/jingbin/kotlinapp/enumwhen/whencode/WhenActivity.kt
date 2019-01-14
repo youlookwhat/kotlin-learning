@@ -15,6 +15,7 @@ class WhenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_when)
+
     }
 
     /**---------------1、在 when 结构中使用任意对象---------------*/
@@ -40,4 +41,13 @@ class WhenActivity : AppCompatActivity() {
             else -> throw Exception("Dirty color")
         }
     }
+
+    /**---------------3、智能转换：合并类型检查和转换---------------*/
+    interface Expr
+
+    // 简单的值对象类，只有一个属性value，实现了Expr接口
+    class Num(val value: Int) : Expr
+
+    // sum运算的实参可以是任何Expr: Num或者另一个Sum
+    class Sum(val left: Expr, val right: Expr) : Expr
 }
