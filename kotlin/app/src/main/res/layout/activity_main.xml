@@ -23,8 +23,16 @@
         android:text="类和属性" />
 
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_enumwhen"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="枚举和when" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_while_for"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="while 和 for" />
 </LinearLayout>

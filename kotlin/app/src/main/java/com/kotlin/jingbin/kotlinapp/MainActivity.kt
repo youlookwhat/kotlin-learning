@@ -1,12 +1,13 @@
 package com.kotlin.jingbin.kotlinapp
 
-import kotlinx.android.synthetic.main.activity_main.*
-
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.kotlin.jingbin.kotlinapp.classproperty.Rectangle
-import com.kotlin.jingbin.kotlinapp.utils.LogUtil
+import android.view.View
+import com.kotlin.jingbin.kotlinapp.classproperty.PersonActivity
+import com.kotlin.jingbin.kotlinapp.enumwhen.whencode.WhenActivity
+import com.kotlin.jingbin.kotlinapp.whilefor.WhileForActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        bt_class.setOnClickListener(View.OnClickListener { PersonActivity.start(baseContext) })
+        bt_enumwhen.setOnClickListener(View.OnClickListener { WhenActivity.start(baseContext) })
+        bt_while_for.setOnClickListener(View.OnClickListener { WhileForActivity.start(baseContext) })
 
         // 1.hello world
         println("hello world kotlin!")

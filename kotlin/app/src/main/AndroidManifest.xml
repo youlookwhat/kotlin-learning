@@ -20,7 +20,8 @@
         <activity android:name=".enumwhen.enumcode.EnumWhenActivity" />
         <activity android:name=".website.srart.basic.BasicActivity" />
         <activity android:name=".enumwhen.whencode.WhenActivity" />
-        <activity android:name=".website.srart.habit.HabitUsageActivity"></activity>
+        <activity android:name=".website.srart.habit.HabitUsageActivity" />
+        <activity android:name=".whilefor.WhileForActivity" />
     </application>
 
 </manifest>
