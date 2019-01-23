@@ -396,7 +396,7 @@ Kotlin 有 while 循环和 do-while 循环，他们的语法和Java中相应的�
 
 #### 3、迭代map
 ```kotlin
-		// 使用 TreeMap 让键排序
+       // 使用 TreeMap 让键排序
         val binaryReps = TreeMap<Char, String>()
         // 创建字符区间 包括 F
         for (c in 'A'..'F') {
