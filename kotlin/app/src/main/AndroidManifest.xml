@@ -22,6 +22,7 @@
         <activity android:name=".enumwhen.whencode.WhenActivity" />
         <activity android:name=".website.srart.habit.HabitUsageActivity" />
         <activity android:name=".whilefor.WhileForActivity" />
+        <activity android:name=".trycatch.TryCatchActivity"></activity>
     </application>
 
 </manifest>

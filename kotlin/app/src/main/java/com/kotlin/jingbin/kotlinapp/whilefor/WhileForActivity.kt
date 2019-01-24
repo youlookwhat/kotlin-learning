@@ -8,6 +8,12 @@ import com.kotlin.jingbin.kotlinapp.R
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 import java.util.*
 
+/**
+ * 1、“while” 循环
+ * 2、迭代数字：区间和数列
+ * 3、迭代map
+ * 4、使用 “in” 检查集合和区间的成员
+ */
 class WhileForActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +48,12 @@ class WhileForActivity : AppCompatActivity() {
         for ((index, element) in list.withIndex()) {
             LogUtil.e("$index = $element")
         }
+
+
+        //--------4.验证-----------
+        LogUtil.e(isLetter('g'))
+        LogUtil.e(isNoDigitic('c'))
+        LogUtil.e(recognize('8'))
     }
 
     /**---------------1、“while” 循环---------------*/
@@ -74,6 +86,19 @@ class WhileForActivity : AppCompatActivity() {
         i % 3 == 0 -> "Fizz"
         i % 5 == 0 -> "Buzz"
         else -> "$i"
+    }
+
+    /**---------------4、使用 “in” 检查集合和区间的成员---------------*/
+    // 1.使用 in 检查区间的成员
+    fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+
+    fun isNoDigitic(c: Char) = c !in '0'..'9'
+
+    // 2.用 in 检查作为when分支
+    fun recognize(c: Char) = when (c) {
+        in '0'..'9' -> "In's a digit!"
+        in 'a'..'z', in 'A'..'Z' -> "In's a letter!"
+        else -> "I don't know.."
     }
 
 

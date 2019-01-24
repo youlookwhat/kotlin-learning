@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import com.kotlin.jingbin.kotlinapp.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.enumwhen.whencode.WhenActivity
+import com.kotlin.jingbin.kotlinapp.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.whilefor.WhileForActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         bt_class.setOnClickListener(View.OnClickListener { PersonActivity.start(baseContext) })
         bt_enumwhen.setOnClickListener(View.OnClickListener { WhenActivity.start(baseContext) })
         bt_while_for.setOnClickListener(View.OnClickListener { WhileForActivity.start(baseContext) })
+        bt_try_catch.setOnClickListener(View.OnClickListener { TryCatchActivity.start(baseContext) })
 
         // 1.hello world
         println("hello world kotlin!")

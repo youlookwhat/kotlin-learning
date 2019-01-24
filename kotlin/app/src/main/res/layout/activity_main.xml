@@ -27,12 +27,22 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="枚举和when" />
+        android:text="枚举和when"
+        android:textAllCaps="false" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_while_for"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="while 和 for" />
+        android:text="while 和 for"
+        android:textAllCaps="false" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_try_catch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="try catch 和 finally"
+        android:textAllCaps="false" />
 </LinearLayout>
