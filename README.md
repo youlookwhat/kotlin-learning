@@ -416,6 +416,77 @@ Kotlin 有 while 循环和 do-while 循环，他们的语法和Java中相应的�
         }
 ```
 
+#### 4、使用 “in” 检查集合和区间的成员
+```kotlin
+   // 1.使用 in 检查区间的成员
+    fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+
+    fun isNoDigitic(c: Char) = c !in '0'..'9'
+
+    // 2.用 in 检查作为when分支
+    fun recognize(c: Char) = when (c) {
+        in '0'..'9' -> "In's a digit!"
+        in 'a'..'z', in 'A'..'Z' -> "In's a letter!"
+        else -> "I don't know.."
+    }
+``` 
+
+### Kotlin中的异常
+```kotlin
+// val 不能再赋值，相当于 final
+        val percentage = 0
+
+        if (percentage !in 0..100) {
+            throw IllegalAccessException("A percentage value must be between 0 and 100: $percentage")
+        }
+        /**
+         * 和所有其他类一样，不必使用 new 关键字来创建异常实例。
+         * 和java不同的是，Kotlin中throw结构是一个表达式，能作为另一个表达式的一部分使用：
+         */
+
+        val number = 8
+        val percentage2 =
+                if (number in 0..100) {
+                    number
+                } else {
+                    // throw 是一个表达式
+                    throw IllegalAccessException("A percentage value must be between 0 and 100: $percentage")
+                }
+
+        val bufferedReader = BufferedReader(StringReader("239"))
+```
+
+#### 1、try catch 和 finally
+```kotlin
+// 不必显式地知道这个函数可能抛出的异常
+    fun readNumber(reader: BufferedReader): Int? {
+        try {
+            val line = reader.readLine()
+            return Integer.parseInt(line)
+
+            // 异常类型在右边
+        } catch (e: NumberFormatException) {
+            return null
+        } finally {
+            reader.close()
+        }
+    }
+```
+
+#### 2、try 作为表达式
+```kotlin
+fun readNumber2(reader: BufferedReader) {
+        val number = try {
+            // 没有任何异常发生时 使用这个值
+            Integer.parseInt(reader.readLine())
+        } catch (e: NumberFormatException) {
+//            return
+            // 发生异常时的情况下使用 null
+            null
+        }
+    }
+```
+
 ## 网址学习
 
 Android 与 Kotlin 入门：
