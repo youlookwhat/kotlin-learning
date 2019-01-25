@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /**Kotlin基础*/
         bt_class.setOnClickListener(View.OnClickListener { PersonActivity.start(baseContext) })
         bt_enumwhen.setOnClickListener(View.OnClickListener { WhenActivity.start(baseContext) })
         bt_while_for.setOnClickListener(View.OnClickListener { WhileForActivity.start(baseContext) })

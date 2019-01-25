@@ -15,6 +15,14 @@
         android:layout_marginBottom="20dp"
         android:text="Hello World!" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kotlin基础"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_class"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -44,5 +52,21 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="try catch 和 finally"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="函数的定义与调用"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_listof"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="在Kotlin中创建集合"
         android:textAllCaps="false" />
 </LinearLayout>
