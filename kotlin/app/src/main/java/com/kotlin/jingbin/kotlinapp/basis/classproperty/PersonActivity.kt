@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.classproperty
+package com.kotlin.jingbin.kotlinapp.basis.classproperty
 
 import android.content.Context
 import android.content.Intent

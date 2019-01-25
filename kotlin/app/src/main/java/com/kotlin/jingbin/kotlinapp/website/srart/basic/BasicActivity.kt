@@ -3,7 +3,7 @@ package com.kotlin.jingbin.kotlinapp.website.srart.basic
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
-import com.kotlin.jingbin.kotlinapp.classproperty.Rectangle
+import com.kotlin.jingbin.kotlinapp.basis.classproperty.Rectangle
 
 /**
  * 3、使用 for 循环

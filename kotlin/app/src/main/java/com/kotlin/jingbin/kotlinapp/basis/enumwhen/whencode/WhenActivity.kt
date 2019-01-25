@@ -1,11 +1,11 @@
-package com.kotlin.jingbin.kotlinapp.enumwhen.whencode
+package com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
-import com.kotlin.jingbin.kotlinapp.enumwhen.enumcode.Color
+import com.kotlin.jingbin.kotlinapp.basis.enumwhen.enumcode.Color
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 /**

@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import com.kotlin.jingbin.kotlinapp.classproperty.PersonActivity
-import com.kotlin.jingbin.kotlinapp.enumwhen.whencode.WhenActivity
-import com.kotlin.jingbin.kotlinapp.trycatch.TryCatchActivity
-import com.kotlin.jingbin.kotlinapp.whilefor.WhileForActivity
+import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
+import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
+import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
+import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

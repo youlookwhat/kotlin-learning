@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.trycatch
+package com.kotlin.jingbin.kotlinapp.basis.trycatch
 
 import android.content.Context
 import android.content.Intent

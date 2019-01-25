@@ -1,9 +1,9 @@
-package com.kotlin.jingbin.kotlinapp.enumwhen.enumcode
+package com.kotlin.jingbin.kotlinapp.basis.enumwhen.enumcode
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.kotlin.jingbin.kotlinapp.R
-import com.kotlin.jingbin.kotlinapp.enumwhen.enumcode.Color.*
+import com.kotlin.jingbin.kotlinapp.basis.enumwhen.enumcode.Color.*
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 class EnumWhenActivity : AppCompatActivity() {

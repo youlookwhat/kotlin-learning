@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.enumwhen.enumcode
+package com.kotlin.jingbin.kotlinapp.basis.enumwhen.enumcode
 
 /**
  * Created by jingbin on 2018/11/20.

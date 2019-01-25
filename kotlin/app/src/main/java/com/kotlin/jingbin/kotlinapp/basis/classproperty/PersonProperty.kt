@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.classproperty
+package com.kotlin.jingbin.kotlinapp.basis.classproperty
 
 /**
  * Created by jingbin on 2018/11/18.

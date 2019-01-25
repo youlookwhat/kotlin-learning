@@ -16,13 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".classproperty.PersonActivity" />
-        <activity android:name=".enumwhen.enumcode.EnumWhenActivity" />
+        <activity android:name="com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity" />
+        <activity android:name="com.kotlin.jingbin.kotlinapp.basis.enumwhen.enumcode.EnumWhenActivity" />
         <activity android:name=".website.srart.basic.BasicActivity" />
-        <activity android:name=".enumwhen.whencode.WhenActivity" />
+        <activity android:name="com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity" />
         <activity android:name=".website.srart.habit.HabitUsageActivity" />
-        <activity android:name=".whilefor.WhileForActivity" />
-        <activity android:name=".trycatch.TryCatchActivity"></activity>
+        <activity android:name="com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity" />
+        <activity android:name="com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity"></activity>
     </application>
 
 </manifest>
