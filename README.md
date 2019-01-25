@@ -37,7 +37,7 @@ if(value is String)               检查类型
  - AndriodSdudio中使用：**"Setting(设置) - Plugins(插件) - Install JetBrains Plugin - Kotlin"**
 
 
-## [2.Kotlin基础](https://github.com/youlookwhat/kotlin-learning/Kotlin基础.md)
+## [2.Kotlin基础](https://github.com/youlookwhat/kotlin-learning/blob/master/Kotlin%E5%9F%BA%E7%A1%80.md)
 
 > - 声明函数、变量、类、枚举以及类型
 > - Kotlin中的控制结构
