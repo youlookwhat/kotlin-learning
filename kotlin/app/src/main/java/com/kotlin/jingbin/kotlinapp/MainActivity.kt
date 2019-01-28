@@ -8,6 +8,7 @@ import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
+import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,13 @@ class MainActivity : AppCompatActivity() {
         bt_enumwhen.setOnClickListener(View.OnClickListener { WhenActivity.start(baseContext) })
         bt_while_for.setOnClickListener(View.OnClickListener { WhileForActivity.start(baseContext) })
         bt_try_catch.setOnClickListener(View.OnClickListener { TryCatchActivity.start(baseContext) })
+        bt_list_of.setOnClickListener(View.OnClickListener { SetOfActivity.start(baseContext) })
 
+//        kotlinDefine()
+
+    }
+
+    private fun kotlinDefine() {
         // 1.hello world
         println("hello world kotlin!")
         tv_content.setText("hello world kotlin!")
@@ -68,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         val s2 = "${s1.replace("is", "was")},but no is $a1"
         // a was 1, but now is 3
         Log.e("s2", s2)
-
     }
 
     // 求和

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,60 +13,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kotlin基础"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_content" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_class"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:text="类和属性" />
+        android:text="类和属性"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/bt_enumwhen"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_enumwhen"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:text="枚举和when"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@+id/bt_class"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_while_for"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:text="while 和 for"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/bt_try_catch"
+        app:layout_constraintTop_toBottomOf="@+id/bt_enumwhen" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_try_catch"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:text="try catch 和 finally"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@+id/bt_while_for"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_enumwhen" />
 
     <TextView
+        android:id="@+id/tv_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="函数的定义与调用"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/bt_try_catch" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_listof"
+        android:id="@+id/bt_list_of"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:text="在Kotlin中创建集合"
-        android:textAllCaps="false" />
-</LinearLayout>
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title2" />
+</android.support.constraint.ConstraintLayout>
