@@ -45,10 +45,28 @@ const val UNIX_LINE_SEPATOR = "\n"
 //public static final String UNIX_LINE_SEPATOR = "\n";
 
 
-/*
-* String: 接受者类型
-* this: 接受者对象
-* */
+/**
+ * 扩展函数：
+ * String: 接受者类型
+ * this: 接受者对象
+ * */
 fun String.lastChar(): Char = this.get(this.length - 1)
 
 fun String.lastChar2(): Char = get(length - 1)
+
+/**
+ * 扩展属性：
+ * */
+val String.lastChar: Char
+    get() = get(length - 1)
+
+/**
+ * 可变的扩展属性：
+ */
+var StringBuilder.lastChar2: Char
+    // getter 属性
+    get() = get(length - 1)
+    // setter 属性
+    set(value: Char) {
+        this.setCharAt(length - 1, value)
+    }
