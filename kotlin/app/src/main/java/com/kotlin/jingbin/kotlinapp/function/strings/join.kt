@@ -50,3 +50,5 @@ const val UNIX_LINE_SEPATOR = "\n"
 * this: 接受者对象
 * */
 fun String.lastChar(): Char = this.get(this.length - 1)
+
+fun String.lastChar2(): Char = get(length - 1)

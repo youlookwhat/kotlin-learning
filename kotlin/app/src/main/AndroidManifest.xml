@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kotlin.jingbin.kotlinapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -23,7 +24,7 @@
         <activity android:name=".website.srart.habit.HabitUsageActivity" />
         <activity android:name=".basis.whilefor.WhileForActivity" />
         <activity android:name=".basis.trycatch.TryCatchActivity" />
-        <activity android:name=".function.SetOfActivity"></activity>
+        <activity android:name=".function.SetOfActivity" />
     </application>
 
 </manifest>
