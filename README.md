@@ -1,11 +1,15 @@
 # kotlin-learning
 
->  - 书籍：[《Kotlin实战》][1]
->  - GitHub：[JetBrains/kotlin][2]
->  - Kotlin 语言中文站：https://www.kotlincn.net/docs/reference/android-overview.html
+|书籍：[《Kotlin实战》][1]、GitHub：[JetBrains/kotlin][2]、[Kotlin 语言中文站][3]|
+|:----:|
 
+>
+ - 书籍：[《Kotlin实战》][1]
+ - GitHub：[JetBrains/kotlin][2]
+ - [Kotlin 语言中文站][3]
 
 **第一部分 Kotlin 简介**
+
  - 1.Kotlin: 定义和目的
  - 2.Kotlin 基础
  - 3.函数的定义和目的
@@ -21,40 +25,16 @@
 > - Kotlin 与其他语言的区别
 > - 用 Kotlin 编写并运行代码
 
-
- - Kotlin和Java一样是一种静态类型的编程语言。编译时即可检查代码正确性。动态语言：Groovy,JRuby。
- - 根据上下问判断变量类型： val x=1
- - 性能、可靠性、可维护性、工具支持。
-
----
-
-支持函数式编程风格，不强制使用：
-
- - 函数类型，允许函数接受其他函数作为参数，或者返回其他函数。
- - lambda表达式
- - 数据类，提供了创建不可变值对象的简明语法
- - 标准库中包含了丰富的API集合，让你用函数式编程风格操作对象和集合。
-
----
-自动检查空指针：
-
- - val s: String? = null  可以为null，也会检查，禁止可能导致的空指针
- - val s2: String = ""    不能为null
-
-避免类型转换异常：
-
-```kotlin
-if(value is String)               检查类型
-  println(value.toUpperCase())    调用该类型的方法
-```
-
----
-
- - 源代码文件存放在后缀名为.kt的文件中，编辑器生成.class文件。
- - AndriodSdudio中使用：**"Setting(设置) - Plugins(插件) - Install JetBrains Plugin - Kotlin"**
+### 总结
+ - Kotlin 是静态类型语言并支持类型推导，允许维护正确性与性能的同时保持源代码的整洁。
+ - Kotlin 支持面向对象很函数式的两种编程风格，通过头等函数使更高级别的抽象成为可能，通过支持不可变值简化了测试和多线程开发。
+ - 在服务端应用程序中它工作的很好，全面支持现在所有的java框架，为常见的任务提供了新工具，如生成HTML和持久化。
+ - 在 Android 上它也可以工作，这得益于紧凑的运行时、对 Andrid API 特殊的编辑器支持以及丰富的库，为常见Android开发任务提供了 Kotlin 友好的函数。
+ - 它是免费和开源的，全面支持主流的 IDE 和构建系统。
+ - Kotlin 是务实的、安全的、简洁的，与 Java 可互操作，意味着它专注于已经使用证明过的解决方案处理常见任务，防止常见的像 NullPointerException 这样的错误，支持紧凑的易读的代码，以及提供与 Java 无限制的集成。
 
 
-## [2.Kotlin基础](https://github.com/youlookwhat/kotlin-learning/blob/master/Kotlin%E5%9F%BA%E7%A1%80.md)
+## 2.Kotlin基础
 
 本章内容包括：
 > - 声明函数、变量、类、枚举以及类型
@@ -74,7 +54,7 @@ if(value is String)               检查类型
  - Kotlin中的异常处理和java非常相似，除了Kotlin不要求你声明函数可以抛出异常。
 
 
-## 函数的定义与调用
+## 3.函数的定义与调用
 
 本章内容包括：
 > - 用于处理集合、字符串和正则表达式的函数
@@ -82,235 +62,8 @@ if(value is String)               检查类型
 > - 通过扩展函数和属性来适配Java库
 > - 使用顶层函数、局部函数和属性架构代码
 
-### 1、在Kotlin中创建集合
-```kotlin
-// 支持数字创建
-        val set = hashSetOf(1, 7, 53)
-
-        // 用类似的方法创建一个 list 或 map:
-        val list = arrayListOf(1, 7, 53)
-        val map = hashMapOf(1 to "one", 7 to "seven, 53 to fifty-three")
-        /**注意： to 并不是一个特殊的结构，而是一个普通函数。后面讨论。*/
-
-        // javaClass 相当于 java 中的getClass()
-        LogUtil.e(set.javaClass.toString())
-        LogUtil.e(list.javaClass.toString())
-        LogUtil.e(map.javaClass.toString())
-        /**
-         * class java.util.HashSet
-         * class java.util.ArrayList
-         * class java.util.HashMap
-         * Kotlin 没有采用它自己的集合类，而是采用的标准的Java集合类。
-         */
-
-        // 获取最后一个元素
-        val string = listOf("first", "second", "fourteenth")
-        LogUtil.e(string.last())
-
-        // 取最大值
-        val numbers = setOf(1, 14, 2)
-        LogUtil.e(numbers.max().toString())
-
-
-        // 2.让函数更好的调用  测试
-        val list2 = listOf(1, 2, 3)
-        LogUtil.e(joinToString(list2, ";", "(", ")"))
-```
-
-### 2、让函数更好的调用
-```kotlin
-/**
-     * val list = listOf(1,2,3)
-     * println(list)    --- 触发了 toString()的调用
-     * 默认输出  [1,2,3]
-     * 想要效果  (1;2;3)
-     *
-     * joinToString() 的基本实现
-     * 通过在元素中间添加分割符号，从直接重写实现函数开始，然后再过渡到Kotlin更惯用的方法来重写。
-     */
-    /**
-     * @param collection 集合
-     * @param separator 分割符
-     * @param prefix 前缀
-     * @param postfix 后缀
-     * 有默认值的参数
-     */
-    fun <T> joinToString(collection: Collection<T>,
-                         separator: String = ",",
-                         prefix: String = "",
-                         postfix: String = ""
-    ): String {
-
-        val result = StringBuilder(prefix)
-
-        for ((index, element) in collection.withIndex()) {
-            // 不用在第一个元素前添加分隔符
-            if (index > 0) {
-                result.append(separator)
-            }
-            result.append(element)
-        }
-        result.append(postfix)
-        return result.toString()
-    }
-```
-
-```kotlin
- /*---------------2.1、命名参数---------------*/
-        joinToString(collection = list2, separator = "", prefix = "", postfix = ".")
-
-        /*---------------2.2、默认参数值  解决 [重载] 重复问题---------------*/
-//        fun <T> joinToString(
-//                collection: Collection<T>,
-//                separator: String = ",",
-//                prefix: String = "",
-//                postfix: String = ""
-//        ): String {
-//
-//        }
-
-
-        LogUtil.e(joinToString(list2))
-        LogUtil.e(joinToString(list2, ";"))
-        LogUtil.e(joinToString(list2, ",", ",", ","))
-        LogUtil.e(joinToString(list2, postfix = ",", prefix = "#"))
-
-        /*---------------2.3、消除静态工具类：顶层函数和属性---------------*/
-        /*
-         *  顶层函数:
-         *  声明joinToString()作为顶层函数
-         *  新建 strings 包，里面直接放置 joinToStrings
-         */
-        joinToStrings(list2, ",", ",", ",")
-```
-
-```kotlin
-package com.kotlin.jingbin.kotlinapp.function.strings
-
-import com.kotlin.jingbin.kotlinapp.utils.LogUtil
-
-/**
- * Created by jingbin on 2019/1/28.
- * 3.2.3、消除静态工具类：顶层函数和属性
- */
-fun <T> joinToStrings(collection: Collection<T>,
-                      separator: String = ",",
-                      prefix: String = "",
-                      postfix: String = ""): String {
-
-    val result = StringBuilder(prefix)
-
-    for ((index, element) in collection.withIndex()) {
-        // 不用在第一个元素前添加分隔符
-        if (index > 0) {
-            result.append(separator)
-        }
-        result.append(element)
-    }
-    result.append(postfix)
-    return result.toString()
-}
-
-
-// 声明一个 顶层属性
-var opCount = 0
-
-// 改变属性的值
-fun performOperation() {
-    // 改变属性的值
-    opCount++
-    // ...
-}
-
-// 读取属性的值
-fun reportOperationCount() {
-    LogUtil.e("Operation performed $opCount times")
-}
-
-const val UNIX_LINE_SEPATOR = "\n"
-// 等同于 Java
-//public static final String UNIX_LINE_SEPATOR = "\n";
-
-
-/*
-* String: 接受者类型
-* this: 接受者对象
-* */
-fun String.lastChar(): Char = this.get(this.length - 1)
-```
-
-
-## 网址学习
-
-Android 与 Kotlin 入门：
-> https://www.kotlincn.net/docs/tutorials/kotlin-android.html
-
-1.将 Java 代码转换为 Kotlin:
-help - find action - Convert Java File to Kotlin File
-
-2.点击提示中的 立即同步（Sync Now）
-
-Kotlin有着极小的运行时文件体积：整个库的大小约 964KB（1.3.0 版本）。这意味着 Kotlin 对 apk 文件大小影响微乎其微。
-
----
-
-Kotlin Android 扩展:
-
-开发者仅需要在模块的 build.gradle 文件中启用 Gradle 安卓扩展插件即可：
-
-```
-apply plugin: 'kotlin-android-extensions'
-```
-导入合成属性
-仅需要一行即可非常方便导入指定布局文件中所有控件属性：
-
-```
-import kotlinx.android.synthetic.main.＜布局＞.*
-```
-
-将有一个名为 hello 的属性：
-```
-activity.hello.text = "Hello World!"
-```
-
-[变量](https://www.kotlincn.net/docs/reference/basic-syntax.html)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 [1]:https://book.douban.com/subject/27093660/
 [2]:https://github.com/JetBrains/kotlin
+[3]:https://www.kotlincn.net/docs/reference/android-overview.html
