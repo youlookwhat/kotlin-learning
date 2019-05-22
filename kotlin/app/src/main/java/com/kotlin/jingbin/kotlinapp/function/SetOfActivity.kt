@@ -9,10 +9,9 @@ import android.widget.Button
 import com.kotlin.jingbin.kotlinapp.R
 import com.kotlin.jingbin.kotlinapp.function.strings.joinToStrings
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar
-import com.kotlin.jingbin.kotlinapp.utils.LogUtil
-
-import com.kotlin.jingbin.kotlinapp.function.strings.lastChar
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar2
+import com.kotlin.jingbin.kotlinapp.utils.LogUtil
+import kotlin.text.StringBuilder
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar as last
 
 /**
