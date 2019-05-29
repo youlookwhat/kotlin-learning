@@ -28,7 +28,7 @@ class SetOfActivity : AppCompatActivity() {
         setTitle("在Kotlin中创建集合")
 
 
-        /**---------------1、在Kotlin中创建集合---------------*/
+        /**-------------------------1、在Kotlin中创建集合-------------------------*/
         // 支持数字创建
         val set = hashSetOf(1, 7, 53)
 
@@ -57,12 +57,11 @@ class SetOfActivity : AppCompatActivity() {
         LogUtil.e(numbers.max().toString())
 
 
+        /**-------------------------2、让函数更好的调用-------------------------*/
         // 2.让函数更好的调用  测试
         val list2 = listOf(1, 2, 3)
         LogUtil.e(joinToString(list2, ";", "(", ")"))
 
-
-        /**---------------2、让函数更好的调用---------------*/
         /*---------------2.1、命名参数---------------*/
         joinToString(collection = list2, separator = "", prefix = "", postfix = ".")
 
@@ -91,13 +90,14 @@ class SetOfActivity : AppCompatActivity() {
         joinToStrings(list2, ",", ",", ",")
 
 
-        /**---------------3、给别人的类添加方法：扩展函数和属性---------------*/
+        /**-------------------------3、给别人的类添加方法：扩展函数和属性-------------------------*/
         LogUtil.e("Kotlin".lastChar())
 
         /*---------------3.1、导入和扩展函数---------------*/
         // import com.kotlin.jingbin.kotlinapp.function.strings.lastChar
         val lastChar = "Kotlin".lastChar()
         // 可以用关键字as 来修改导入的类或者函数名称:  [可以用来解决命名冲突]
+        // import com.kotlin.jingbin.kotlinapp.function.strings.lastChar as last
         val last = "Kotlin".last()
 
 
@@ -125,19 +125,29 @@ class SetOfActivity : AppCompatActivity() {
         }
         LogUtil.e(list2.joinToString(";", "((", "))"))
 
+        // 扩展函数无非是静态函数的一个高效语法糖
         fun Collection<String>.join(separator: String = ",", prefix: String = "", postfix: String = "") = joinToString(separator, prefix, postfix)
 
         LogUtil.e(listOf("one", "two", "eight").join(" "))
 
+
         /*---------------3.4、不可重写的扩展函数---------------*/
-        // 在Kotlin中，重写成员函数式很平常的一件事情。但是，不能重写扩展函数。
+        // 在Kotlin中，重写成员函数是很平常的一件事情。但是，不能重写扩展函数。
+
+        /**这是扩展函数的写法！扩展了 View.class 的函数方法*/
         fun View.showOff() = LogUtil.e("I'm a view")
 
+        /**
+         * 这是扩展函数的写法！扩展了 Button.class 的函数方法。
+         * 而 Button 继承于 View ,但是输出为 View的扩展函数的内容，因为 “扩展函数并不存在重写，因为Kotlin会把它们当做作静态函数对待”
+         * 如果 Button 直接重写 View 类里面的 showOff() ，则是生效的，因为不是扩展函数，写法不一样！！
+         * */
         fun Button.showOff() = LogUtil.e("I'm a Button")
 
         val view: View = Button(this)
         LogUtil.e(view.showOff()) //  I'm a view
         // 扩展函数并不存在重写，因为Kotlin会把它们当做作静态函数对待
+
 
         /*---------------3.5、扩展属性  join.kt  ---------------*/
         // val kotlin.String.lastChar: Char
@@ -148,7 +158,7 @@ class SetOfActivity : AppCompatActivity() {
         LogUtil.e(builder) // Kotlin!
 
 
-        /**---------------4、处理集合: 可变参数、中辍调用和库的支持---------------*/
+        /**-------------------------4、处理集合: 可变参数、中辍调用和库的支持-------------------------*/
 
 
     }

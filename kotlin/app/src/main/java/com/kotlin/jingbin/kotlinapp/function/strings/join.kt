@@ -4,8 +4,12 @@ import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 
 /**
  * Created by jingbin on 2019/1/28.
- * 3.2.3、消除静态工具类：顶层函数和属性
+ * 2.3、消除静态工具类：顶层函数和属性
  */
+
+/**---------------------------------顶层函数---------------------------------------*/
+
+/**函数的目的为：将给定的集合数据，用 , 分割拼接后返回*/
 fun <T> joinToStrings(collection: Collection<T>,
                       separator: String = ",",
                       prefix: String = "",
@@ -24,6 +28,7 @@ fun <T> joinToStrings(collection: Collection<T>,
     return result.toString()
 }
 
+/**-------------------------------顶层属性-----------------------------------------*/
 
 // 声明一个 顶层属性
 var opCount = 0
@@ -45,6 +50,7 @@ const val UNIX_LINE_SEPATOR = "\n"
 //public static final String UNIX_LINE_SEPATOR = "\n";
 
 
+/**----------------------------------扩展函数--------------------------------------*/
 /**
  * 扩展函数：
  * String: 接受者类型
