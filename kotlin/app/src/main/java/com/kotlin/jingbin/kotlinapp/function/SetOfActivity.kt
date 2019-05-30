@@ -2,6 +2,7 @@ package com.kotlin.jingbin.kotlinapp.function
 
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -160,6 +161,70 @@ class SetOfActivity : AppCompatActivity() {
 
         /**-------------------------4、处理集合: 可变参数、中辍调用和库的支持-------------------------*/
 
+        /*---------------4.1、扩展 Java集合的API  ---------------*/
+
+        // 基于 Kotlin中的集合与Java的类相同，但是对API做了扩展。
+        val strings = listOf("first", "second", "fourteenth")
+        LogUtil.e(strings.last())
+        val of = setOf(1, 15, 3)
+        val numbers2: Collection<Int> = setOf(1, 14, 2)
+        println(of.max())       //15
+        println(numbers2.max()) //14
+
+
+        /*---------------4.2、可变参数: 让函数支持任意数量的参数  ---------------*/
+
+        // 当你创建一个函数列表的时候，可以传任意个人的参数给它
+        val listOf = listOf(2, 3, 4, 5, 6)
+        // 如果看看这个函数在库中的声明：
+        fun <T> listOf(vararg elements: T): List<T> = if (elements.size > 0) elements.asList() else emptyList()
+
+        /**
+         * 可变参数与Java类似
+         * 不同点：
+         *  - java   使用的是 三个点
+         *  - kotlin 使用的是 vararg
+         *
+         *  另一个区别：当需要传递的参数已经包装在数组中时，调用该函数的语法。
+         *  技术来讲，这个功能称为  展开运算符，使用的时候不过是在对应的参数前面放一个 *
+         */
+        fun main(args: Array<String>) {
+            // 展开运算符展开数组内容
+            val list = kotlin.collections.listOf("args:", *args)
+            println(list)
+        }
+
+
+        /*---------------4.3、键值对的处理：中辍调用和解构声明  ---------------*/
+
+        // 可以使用 mapOf 函数来创建map:
+        val mapOf = mapOf(1.to("one"), 2 to "two", 7 to "seven")
+        /**
+         *  单词 to 不是内置的结构，而是一种特殊的函数调用，被称为 中辍调用。
+         *  中辍调用中，没有添加额外的分隔符，函数名称是直接放在目标对象名称和参数之间的。
+         *  等价：
+         *   - 1.to("one")   // 一般 to 函数的调用
+         *   - *  2 to "two" // 使用中辍符号调用的 to 函数
+         */
+
+        // 如果使用中辍符号，需要使用 infix 修饰符类标记它 (Any 超类)
+        infix fun Any.to(ohther: Any) = Pair(this, ohther)
+
+
+        /**
+         * 解构声明：
+         * 用 to 函数创建一个pair，然后用解构声明来展开
+         */
+        val (number, name) = 1 to "one"
+        LogUtil.e(number)
+        LogUtil.e(name)
+
+
+        // 解构声明不止运用于 pair 也适用于循环
+        // 打印 val strings = listOf("first", "second", "fourteenth")
+        for ((index, element) in strings.withIndex()) {
+            LogUtil.e("$index: $element")
+        }
 
     }
 
@@ -204,6 +269,7 @@ class SetOfActivity : AppCompatActivity() {
         fun start(context: Context) {
             val intent = Intent()
             intent.setClass(context, SetOfActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
     }
