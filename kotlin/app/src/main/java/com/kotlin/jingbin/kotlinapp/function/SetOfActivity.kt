@@ -2,7 +2,6 @@ package com.kotlin.jingbin.kotlinapp.function
 
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -20,6 +19,7 @@ import com.kotlin.jingbin.kotlinapp.function.strings.lastChar as last
  * 3.2 让函数更好的调用
  * 3.3 给别人的类添加方法：扩展函数和属性
  * 3.4 处理集合: 可变参数、中辍调用和库的支持
+ * 3.5 字符串和正则表达式的处理
  * */
 class SetOfActivity : AppCompatActivity() {
 
@@ -225,6 +225,18 @@ class SetOfActivity : AppCompatActivity() {
         for ((index, element) in strings.withIndex()) {
             LogUtil.e("$index: $element")
         }
+
+
+        /**-------------------------5、字符串和正则表达式的处理-------------------------*/
+
+        // 5.1 分割字符串
+        val split = "12.345-6.A".split(".")
+        val split2 = "12.345-6.A".split(".", "-")
+
+        LogUtil.e(split)
+        LogUtil.e(split2)
+        // java处理
+        SetOfJava().start()
 
     }
 
