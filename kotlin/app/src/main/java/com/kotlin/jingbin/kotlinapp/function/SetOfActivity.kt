@@ -12,6 +12,10 @@ import com.kotlin.jingbin.kotlinapp.function.strings.lastChar
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar2
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 import kotlin.text.StringBuilder
+import kotlin.text.split
+import kotlin.text.substringAfterLast
+import kotlin.text.substringBeforeLast
+import kotlin.text.toRegex
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar as last
 
 /**
@@ -231,12 +235,42 @@ class SetOfActivity : AppCompatActivity() {
 
         // 5.1 分割字符串
         val split = "12.345-6.A".split(".")
+        // 指定多个分隔符
         val split2 = "12.345-6.A".split(".", "-")
 
+        // 12 345-6  A
         LogUtil.e(split)
+        // 12  345  6   A
         LogUtil.e(split2)
         // java处理
         SetOfJava().start()
+
+
+        // 5.2 正则表达式和三重引号的字符串
+
+        // 使用String的扩展函数来解析文件路径
+        fun parsePath(path: String) {
+            val directory = path.substringBeforeLast("/")
+            val fullName = path.substringAfterLast("/")
+            val fileName = fullName.substringBeforeLast(".")
+            val extension = fullName.substringBeforeLast(".")
+            LogUtil.e("Dir: $directory, name: $fileName, ext: $extension")
+        }
+        parsePath("/Users/yole/kotlin-book/chapter.adoc")
+
+        // 使用正则表达式解析文件路径
+        fun parsePath2(path: String) {
+            val toRegex = """(.+)/(.+)\.(.+)""".toRegex()
+            val matchResult = toRegex.matchEntire(path)
+            if (matchResult != null) {
+                val (directory, fileName, extension) = matchResult.destructured
+                LogUtil.e("Dir2: $directory, name2: $fileName, ext2: $extension")
+            }
+        }
+        parsePath2("/Users/yole/kotlin-book/chapter.adoc")
+
+        """  (.+)        /     (.+)       \.         (.+)"""
+        """  目录   最后一个斜线  文件名    最后一个点     扩展名"""
 
     }
 

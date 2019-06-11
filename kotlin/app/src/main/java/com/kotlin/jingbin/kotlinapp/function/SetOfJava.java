@@ -8,8 +8,8 @@ public class SetOfJava {
         String f = "12.345-6.A";
 
 //        String[] split = f.split(".");
-//        String[] split = f.split("\\.");
-        String[] split = f.split("\\\n");
+        String[] split = f.split("\\.");
+//        String[] split = f.split("\\\n");
 //        String[] split = f.split("\\\\n");
 
         DebugUtil.e(split.length);
