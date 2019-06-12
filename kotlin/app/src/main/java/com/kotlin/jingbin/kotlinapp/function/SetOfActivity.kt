@@ -11,11 +11,14 @@ import com.kotlin.jingbin.kotlinapp.function.strings.joinToStrings
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar2
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
+import java.util.Collections.emptyList
 import kotlin.text.StringBuilder
+import kotlin.text.isEmpty
 import kotlin.text.split
 import kotlin.text.substringAfterLast
 import kotlin.text.substringBeforeLast
 import kotlin.text.toRegex
+import kotlin.text.trimMargin
 import com.kotlin.jingbin.kotlinapp.function.strings.lastChar as last
 
 /**
@@ -24,6 +27,7 @@ import com.kotlin.jingbin.kotlinapp.function.strings.lastChar as last
  * 3.3 给别人的类添加方法：扩展函数和属性
  * 3.4 处理集合: 可变参数、中辍调用和库的支持
  * 3.5 字符串和正则表达式的处理
+ * 3.6 让你的代码更整洁：局部函数和扩展
  * */
 class SetOfActivity : AppCompatActivity() {
 
@@ -233,7 +237,7 @@ class SetOfActivity : AppCompatActivity() {
 
         /**-------------------------5、字符串和正则表达式的处理-------------------------*/
 
-        // 5.1 分割字符串
+        /*---------------5.1 分割字符串  ---------------*/
         val split = "12.345-6.A".split(".")
         // 指定多个分隔符
         val split2 = "12.345-6.A".split(".", "-")
@@ -246,7 +250,7 @@ class SetOfActivity : AppCompatActivity() {
         SetOfJava().start()
 
 
-        // 5.2 正则表达式和三重引号的字符串
+        /*---------------5.2 正则表达式和三重引号的字符串---------------*/
 
         // 使用String的扩展函数来解析文件路径
         fun parsePath(path: String) {
@@ -272,6 +276,82 @@ class SetOfActivity : AppCompatActivity() {
         """  (.+)        /     (.+)       \.         (.+)"""
         """  目录   最后一个斜线  文件名    最后一个点     扩展名"""
 
+
+        /*---------------5.3 多行三重引号的字符串---------------*/
+        val kotlinLogo = """|//
+            .|//
+            .|/\"""
+        // trimMargin 来删除每行中的前缀和前面的空格
+        LogUtil.e(kotlinLogo.trimMargin("."))
+        /*
+        |//
+        |//
+        |/\
+        */
+
+        // 不用转义字符 \
+        """C://Users\yole\kotlin-book"""
+        // 使用美元💲字符
+        """${'$'}99.9"""
+
+
+
+        /**-------------------------6、让你的代码更整洁：局部函数和扩展-------------------------*/
+
+        // 带重复代码的函数
+        class User(val id: Int, val name2: String, val address: String)
+
+        fun saveUser(user: User) {
+            if (user.name2.isEmpty()) {
+                throw IllegalArgumentException("Can't save user ${user.name2}: empty Name")
+            }
+
+            if (user.address.isEmpty()) {
+                throw IllegalArgumentException("Can't save user ${user.address}: empty Address")
+            }
+            // 保存user到数据库
+        }
+
+        // 提取局部函数避免重复 -->  在局部函数中访问外层函数的参数 --> 提取逻辑到扩展函数
+        fun saveUser2(user: User) {
+            fun validate(user: User, value: String, field: String) {
+                if (value.isEmpty()) {
+                    // 可以直接访问外部函数的参数
+                    throw IllegalArgumentException("Can't save user ${user.id}: empty $field")
+                }
+            }
+
+            // 在局部函数中访问外层函数的参数
+            // 不需要在 saveUser2 函数中重复 user 参数
+            fun validate2(value: String, field: String) {
+                if (value.isEmpty()) {
+                    throw IllegalArgumentException("Can't save user ${user.id}: empty $field")
+                }
+            }
+            validate(user, user.name2, "Name")
+            validate2(user.name2, "Name")
+        }
+
+        // 提取逻辑到扩展函数
+        fun User.validateBeforeSave() {
+            fun validate3(value: String, fieldName: String) {
+                if (value.isEmpty()) {
+                    // 可以直接访问 user 的属性
+                    throw IllegalArgumentException("Can't save user $id: empty $fieldName")
+                }
+            }
+            validate3(name2, "Name")
+            validate3(address, "Address")
+        }
+
+        fun saveUser3(user: User) {
+            // 扩展函数
+            user.validateBeforeSave()
+            // 保存user到数据库
+        }
+
+        // java.lang.IllegalArgumentException: Can't save user 2: empty Name
+        saveUser3(User(2, "haha", "china"))
     }
 
     /**---------------2、让函数更好的调用---------------*/
