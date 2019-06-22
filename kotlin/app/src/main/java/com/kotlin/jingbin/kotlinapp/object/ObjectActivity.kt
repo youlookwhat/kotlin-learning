@@ -81,7 +81,88 @@ class ObjectActivity : AppCompatActivity() {
 
 
         /*--------------- 4.1.2 open、final和abstract修饰符: 默认为final -------------*/
+        /**
+         * 《Effective Java》："要么为继承做好设计并记录文档，要么禁止这么做。"
+         * Java 的类和方法默认是open的，而 Kotlin 中默认都是final的。
+         * 如果你想允许创建一个类的子类，需要使用 open 修饰符来标识这个类。
+         * 此外需要给每一个可以被重写的属性或方法添加 open 修饰符。
+         */
 
+        // 代码清单 6 声明一个带一个 open 方法的open类
+        open class RichButton : Clickable {
+
+            // 这个函数重写了一个open函数并且它本身同样是open的
+            override fun click() {}
+
+            // 这个函数是final的：不能在子类中重写它
+            fun disable() {}
+
+            // 这个函数使open的：可以在子类中重写它
+            open fun animate() {}
+        }
+
+        /**
+         * 注意：如果你重写了一个基类或者接口的成员，重写了的成员同样默认是open的。
+         * 如果你想改变这一行为，阻止子类的操作，可以显示将重写的成员变量设置为final。
+         */
+
+        // 代码清单 7 禁止重写
+        open class RichButton2 : Clickable {
+
+            // 没有final的override 意味着是open的
+            final override fun click() {}
+        }
+
+        /**
+         * open 类和智能转换
+         * 属性默认是final的，可以在大多数属性上不加思考的使用智能转换，这提高了你的代码表现力。
+         * if (e is Sum) {
+         * // 变量 e 被智能转换了类型
+         * return eval(e.left) + eval(e.right)
+         * }
+         */
+
+        // 代码清单 8 声明一个抽象类
+        // 这个类是抽象的，不能直接创建它的实例
+        abstract class Animated {
+
+            // 这个函数是抽象的：它没有实现必须被子类重写
+            abstract fun animate()
+
+            // 抽象类的抽象函数并不是默认open的，但是可以被标注为open的
+            open fun stopAnimating() {}
+
+            fun animateTeice() {}
+        }
+
+        // 测试
+        class Button3 : Animated() {
+            // 一定实现
+            override fun animate() {
+
+            }
+
+            // 可以选择实现
+            override fun stopAnimating() {
+                super.stopAnimating()
+            }
+            // 不能实现
+//            animateTeice()
+        }
+
+        /**
+         * 修饰符      相关成员                评注
+         * final      不能被重写              类中成员默认使用
+         * open       可以被重写              需要明确地表明
+         * abstract   必须被重写              只能在抽象类中使用：抽象成员不能实现
+         * override   重写父类或接口中的成员    如果没有使用final表明，重写的成员默认是开放的
+         */
+
+        /**
+         * open : 控制继承修饰符。
+         * 要被继承的类必须是open修饰的，因为类默认是final的。
+         * 同理，要被重写的属性和方法也必须被open修饰。
+         */
 
     }
 
