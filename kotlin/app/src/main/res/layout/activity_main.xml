@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Hello World!"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -24,6 +25,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_content" />
 
     <android.support.v7.widget.AppCompatButton
@@ -77,14 +79,37 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_try_catch" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_list_of"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="在Kotlin中创建集合"
         android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title2" />
+
+    <TextView
+        android:id="@+id/tv_title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="类、对象和接口"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_list_of" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_class_object_interface"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定义类的继承结构"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
 </android.support.constraint.ConstraintLayout>

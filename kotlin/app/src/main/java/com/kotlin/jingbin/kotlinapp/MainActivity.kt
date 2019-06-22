@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import com.kotlin.jingbin.kotlinapp.`object`.ObjectActivity
 import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
@@ -18,11 +19,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /**Kotlin基础*/
-        bt_class.setOnClickListener(View.OnClickListener { PersonActivity.start(baseContext) })
-        bt_enumwhen.setOnClickListener(View.OnClickListener { WhenActivity.start(baseContext) })
-        bt_while_for.setOnClickListener(View.OnClickListener { WhileForActivity.start(baseContext) })
+        bt_class.setOnClickListener { PersonActivity.start(baseContext) }
+        bt_enumwhen.setOnClickListener { WhenActivity.start(baseContext) }
+        bt_while_for.setOnClickListener { WhileForActivity.start(baseContext) }
         bt_try_catch.setOnClickListener(View.OnClickListener { TryCatchActivity.start(baseContext) })
         bt_list_of.setOnClickListener(View.OnClickListener { SetOfActivity.start(baseContext) })
+        bt_class_object_interface.setOnClickListener { ObjectActivity.start(baseContext) }
 
 //        kotlinDefine()
 

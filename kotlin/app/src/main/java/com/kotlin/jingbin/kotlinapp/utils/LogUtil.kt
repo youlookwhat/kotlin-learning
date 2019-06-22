@@ -1,7 +1,6 @@
 package com.kotlin.jingbin.kotlinapp.utils
 
 import android.util.Log
-import java.util.*
 
 /**
  * Created by jingbin on 2018/11/18.
@@ -10,20 +9,22 @@ import java.util.*
 
 object LogUtil {
 
+    private const val TAG = "---------------jing"
+
     fun e(message: Boolean) {
-        Log.e("jing", message.toString())
+        Log.e(TAG, message.toString())
     }
 
     fun e(message: Int) {
-        Log.e("jing", message.toString())
+        Log.e(TAG, message.toString())
     }
 
     fun e(message: String) {
-        Log.e("jing", message)
+        Log.e(TAG, message)
     }
 
     fun e(message: Any) {
-        Log.e("jing", message.toString())
+        Log.e(TAG, message.toString())
     }
 
     fun e(tag: String, message: String) {
