@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".object.ObjectActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +24,10 @@
         <activity android:name=".website.srart.habit.HabitUsageActivity" />
         <activity android:name=".basis.whilefor.WhileForActivity" />
         <activity android:name=".basis.trycatch.TryCatchActivity" />
+        <activity android:name=".object.ObjectActivity" />
         <activity android:name=".function.SetOfActivity" />
+        <activity android:name=".website.classesandobjects.ClassesAndObjectsActivity" />
+        <activity android:name=".website.functionlambda.FunctionLambdaActivity" />
     </application>
 
 </manifest>

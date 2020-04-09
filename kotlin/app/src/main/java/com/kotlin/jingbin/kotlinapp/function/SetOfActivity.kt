@@ -216,14 +216,14 @@ class SetOfActivity : AppCompatActivity() {
          */
 
         // 如果使用中辍符号，需要使用 infix 修饰符类标记它 (Any 超类)
-        infix fun Any.to(ohther: Any) = Pair(this, ohther)
+        infix fun Any.shl(other: Any) = Pair(this, other)
 
 
         /**
          * 解构声明：
-         * 用 to 函数创建一个pair，然后用解构声明来展开
+         * 用 shl 函数创建一个pair，然后用解构声明来展开
          */
-        val (number, name) = 1 to "one"
+        val (number, name) = 1 shl "one"
         LogUtil.e(number)
         LogUtil.e(name)
 
