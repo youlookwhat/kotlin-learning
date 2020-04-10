@@ -19,12 +19,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /**Kotlin基础*/
-        bt_class.setOnClickListener { PersonActivity.start(baseContext) }
-        bt_enumwhen.setOnClickListener { WhenActivity.start(baseContext) }
-        bt_while_for.setOnClickListener { WhileForActivity.start(baseContext) }
-        bt_try_catch.setOnClickListener(View.OnClickListener { TryCatchActivity.start(baseContext) })
-        bt_list_of.setOnClickListener(View.OnClickListener { SetOfActivity.start(baseContext) })
-        bt_class_object_interface.setOnClickListener { ObjectActivity.start(baseContext) }
+        bt_class.setOnClickListener { PersonActivity.start(this) }
+        bt_enumwhen.setOnClickListener { WhenActivity.start(this) }
+        bt_while_for.setOnClickListener { WhileForActivity.start(this) }
+        bt_try_catch.setOnClickListener(View.OnClickListener { TryCatchActivity.start(this) })
+        bt_list_of.setOnClickListener(View.OnClickListener { SetOfActivity.start(this) })
+        bt_class_object_interface.setOnClickListener { ObjectActivity.start(this) }
 
 //        kotlinDefine()
 

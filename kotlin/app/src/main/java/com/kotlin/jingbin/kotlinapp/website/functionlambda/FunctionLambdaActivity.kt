@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
+import com.kotlin.jingbin.kotlinapp.utils.DebugUtil
 
 /**
  * 网站学习：函数与Lambda表达式
@@ -33,7 +34,7 @@ class FunctionLambdaActivity : AppCompatActivity() {
         tailrec fun findFixPoint(x: Double = 1.0): Double =
                 if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
 
-        // 3.高阶函数
+        // 3.高阶函数：高阶函数是将函数用作参数或返回值的函数
         fun <T, R> Collection<T>.fold(
                 initial: R,
                 combine: (acc: R, nextElement: T) -> R
@@ -60,10 +61,46 @@ class FunctionLambdaActivity : AppCompatActivity() {
 
         // lambda 表达式的参数类型是可选的，如果能够推断出来的话：
         val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
+        DebugUtil.e(joinedToString)
 
-        // 函数引用也可以用于高阶函数调用：
+        // 函数引用也可以用于高阶函数调用： 二元操作: a * b	a.times(b)
         val product = items.fold(1, Int::times)
+        DebugUtil.e("product:" + product)
 
+        // 4. 函数类型实例调用 函数类型的值可以通过其 invoke(……) 操作符调用：f.invoke(x) 或者直接 f(x)。
+        val stringPlus: (String, String) -> String = String::plus
+        val intPlus: Int.(Int) -> Int = Int::plus
+
+        println(stringPlus.invoke("<-", "->"))
+        println(stringPlus("Hello, ", "world!"))
+
+        println(intPlus.invoke(1, 1)) // 2
+        println(intPlus(1, 2)) // 3
+        println(2.intPlus(3)) // 5、类扩展调用
+
+        // 5.Lambda 表达式与匿名函数
+//         max(strings,{a,b -> a.length<b.length})
+        fun compare(a: String, b: String): Boolean = a.length < b.length
+
+        // 6.Lambda 表达式语法
+        val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
+        sum.invoke(1, 1)
+        sum(1, 2)
+//        2.sum(3)
+
+        val sum2 = { x: Int, y: Int -> x + y }
+        sum2.invoke(1, 1)
+        sum2(1, 2)
+
+        // 7.传递末尾的 lambda 表达式
+        val product2 = items.fold(1) { acc, e -> acc * e }
+
+        // 8.匿名函数
+        fun(x: Int, y: Int): Int = x + y
+
+        fun(x: Int, y: Int): Int {
+            return x + y
+        }
     }
 
     companion object {

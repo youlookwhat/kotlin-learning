@@ -28,6 +28,7 @@
         <activity android:name=".function.SetOfActivity" />
         <activity android:name=".website.classesandobjects.ClassesAndObjectsActivity" />
         <activity android:name=".website.functionlambda.FunctionLambdaActivity" />
+        <activity android:name=".website.classesandobjects.CollectionActivity" />
     </application>
 
 </manifest>
