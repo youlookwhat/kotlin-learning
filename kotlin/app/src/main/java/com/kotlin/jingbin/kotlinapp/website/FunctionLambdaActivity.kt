@@ -1,4 +1,4 @@
-package com.kotlin.jingbin.kotlinapp.website.functionlambda
+package com.kotlin.jingbin.kotlinapp.website
 
 import android.content.Context
 import android.content.Intent

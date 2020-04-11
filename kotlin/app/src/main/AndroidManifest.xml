@@ -26,9 +26,9 @@
         <activity android:name=".basis.trycatch.TryCatchActivity" />
         <activity android:name=".object.ObjectActivity" />
         <activity android:name=".function.SetOfActivity" />
-        <activity android:name=".website.classesandobjects.ClassesAndObjectsActivity" />
-        <activity android:name=".website.functionlambda.FunctionLambdaActivity" />
-        <activity android:name=".website.classesandobjects.CollectionActivity" />
+        <activity android:name=".website.ClassesAndObjectsActivity" />
+        <activity android:name=".website.FunctionLambdaActivity" />
+        <activity android:name=".website.CollectionActivity" />
     </application>
 
 </manifest>
