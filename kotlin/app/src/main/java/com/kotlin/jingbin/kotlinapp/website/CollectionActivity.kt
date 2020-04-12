@@ -156,6 +156,40 @@ class CollectionActivity : AppCompatActivity() {
         val numberPairs = listOf("one" to 1, "two" to 2, "three" to 3, "four" to 4)
         println(numberPairs.unzip())// ([one, two, three, four], [1, 2, 3, 4])
 
+        // 9.3 关联
+        // 基本的关联函数 associateWith() 创建一个 Map，其中原始集合的元素是键，并通过给定的转换函数从中产生值。 如果两个元素相等，则仅最后一个保留在 Map 中
+        val numbers11 = listOf("one", "two", "three", "four")
+        println(numbers11.associateWith { it.length })// {one=3, two=3, three=5, four=4}
+        // 为了使用集合元素作为值来构建 Map，有一个函数 associateBy()。
+        val numbers12 = listOf("one", "two", "three", "four")
+        println(numbers12.associateBy { it.first().toUpperCase() })
+        println(numbers12.associateBy(keySelector = { it.first().toUpperCase() }, valueTransform = { it.length }))
+        // 另一种构建 Map 的方法是使用函数 associate()，其中 Map 键和值都是通过集合元素生成的。
+        val names = listOf("Alice Adams", "Brian Brown", "Clara Campbell")
+//        println(names.associate { name -> parseFullName(name).let { it.lastName to it.firstName } })
+
+        // 9.4 打平
+        // 如需操作嵌套的集合，则可能会发现提供对嵌套集合元素进行打平访问的标准库函数很有用
+        // 第一个函数为 flatten()。
+        val numberSets = listOf(setOf(1, 2, 3), setOf(4, 5, 6), setOf(1, 2))
+        println(numberSets.flatten())
+        // 另一个函数——flatMap() 提供了一种灵活的方式来处理嵌套的集合。
+//        val containers = listOf(
+//                StringContainer(listOf("one", "two", "three")),
+//                StringContainer(listOf("four", "five", "six")),
+//                StringContainer(listOf("seven", "eight"))
+//        )
+//        println(containers.flatMap { it.values })
+
+        // 9.5 字符串表示
+        // 将集合转换为字符串的函数：joinToString() 与 joinTo()。
+        val numbers13 = listOf("one", "two", "three", "four")
+        println(numbers13)//[one, two, three, four]
+        println(numbers13.joinToString())//one, two, three, four
+        val listString = StringBuffer("The list of numbers: ")
+        numbers13.joinTo(listString)
+        println(listString)//The list of numbers: one, two, three, four
+
     }
 
     companion object {
