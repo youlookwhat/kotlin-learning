@@ -126,7 +126,7 @@ class CollectionActivity : AppCompatActivity() {
         mutableListOf1.sort()
         println(mutableListOf1 == sorted)//true
 
-        // 9 集合转换 https://www.kotlincn.net/docs/reference/collection-transformations.html
+        // 9 转换 https://www.kotlincn.net/docs/reference/collection-transformations.html
 
         // 9.1 映射
         // 映射转换从另一个集合的元素上的函数结果创建一个集合。 基本的映射函数是 map()。
@@ -189,6 +189,117 @@ class CollectionActivity : AppCompatActivity() {
         val listString = StringBuffer("The list of numbers: ")
         numbers13.joinTo(listString)
         println(listString)//The list of numbers: one, two, three, four
+
+        // 10 过滤: https://www.kotlincn.net/docs/reference/collection-filtering.html
+        // 10.1 按谓词过滤 (基本的过滤函数是 filter()。当使用一个谓词来调用时，filter() 返回与其匹配的集合元素。)
+        val numbers14 = listOf("one", "two", "three", "four")
+        val longerThan4 = numbers14.filter { it.length > 3 }
+        println(longerThan4)// [three, four]
+        val numbersMap101 = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key11" to 11)
+        val filteredMap = numbersMap101.filter { (key, value) -> key.endsWith("1") && value > 10 }
+        println(filteredMap)// {key11=11}
+
+        // 如果想在过滤中使用元素在集合中的位置，应该使用 filterIndexed()。
+        // 如果想使用否定条件来过滤集合，请使用 filterNot()。
+        val numbers15 = listOf("one", "two", "three", "four")
+        val filteredIdx = numbers15.filterIndexed { index, s -> (index != 0) && (s.length < 5) }
+        val filteredNot = numbers15.filterNot { it.length <= 3 }
+        println(filteredIdx)// [two, four]
+        println(filteredNot)// [three, four]
+
+        // filterIsInstance() 返回给定类型的集合元素。
+        val numbers16 = listOf(null, 1, "two", 3.0, "four")
+        println("All String elements in upper case:")
+        numbers16.filterIsInstance<String>().forEach {
+            println(it.toUpperCase())// TWO FOUR
+        }
+
+        // filterNotNull() 返回所有的非空元素。
+        val numbers17 = listOf(null, "one", "two", null)
+        numbers17.filterNotNull().forEach {
+            println(it.length)   // 对可空的 String 来说长度不可用 [3 3]
+        }
+
+        // 10.2 划分
+        // partition() – 通过一个谓词过滤集合并且将不匹配的元素存放在一个单独的列表中。
+        val numbers18 = listOf("one", "two", "three", "four")
+        val (match, rest) = numbers18.partition { it.length > 3 }
+
+        println(match)// [three, four]
+        println(rest)// [one, two]
+
+        // 10.3 检验谓词
+        // 如果至少有一个元素匹配给定谓词，那么 any() 返回 true。
+        // 如果没有元素与给定谓词匹配，那么 none() 返回 true。
+        // 如果所有元素都匹配给定谓词，那么 all() 返回 true。
+        val numbers19 = listOf("one", "two", "three", "four")
+        println(numbers19.any { it.endsWith("e") })//true
+        println(numbers19.none { it.endsWith("a") })//true
+        println(numbers19.all { it.endsWith("e") })//false
+        // 在一个空集合上使用任何有效的谓词去调用 all() 都会返回 true 。
+        // 这种行为在逻辑上被称为 vacuous truth。
+        println(emptyList<Int>().all { it > 5 }) //true   // vacuous truth
+
+        // any() 和 none() 也可以不带谓词使用：在这种情况下它们只是用来检查集合是否为空。
+        // 如果集合中有元素，any() 返回 true，否则返回 false；none() 则相反。
+        val numbers20 = listOf("one", "two", "three", "four")
+        val empty = emptyList<String>()
+        println(numbers20.any())//true
+        println(empty.any())//false
+        println(numbers.none())//false
+        println(empty.none())//true
+
+        // 11 plus 与 minus 操作符 https://www.kotlincn.net/docs/reference/collection-plus-minus.html
+        val numbers21 = listOf("one", "two", "three", "four")
+        val plusList = numbers21 + "five"
+        val minusList = numbers21 - listOf("three", "four")
+        println(plusList)// [one, two, three, four, five]
+        println(minusList)// [one, two]
+
+        // 12 分组 https://www.kotlincn.net/docs/reference/collection-grouping.html
+        //  基本函数 groupBy() 使用一个 lambda 函数并返回一个 Map。
+        //  在此 Map 中，每个键都是 lambda 结果，而对应的值是返回此结果的元素 List。
+        //  例如，可以使用此函数将 String 列表按首字母分组。
+        val numbers22 = listOf("one", "two", "three", "four", "five")
+        // {O=[one], T=[two, three], F=[four, five]}
+        println(numbers22.groupBy { it.first().toUpperCase() })
+        // {o=[ONE], t=[TWO, THREE], f=[FOUR, FIVE]}
+        println(numbers22.groupBy(keySelector = { it.first() }, valueTransform = { it.toUpperCase() }))
+
+        // 如果要对元素进行分组，然后一次将操作应用于所有分组，请使用 groupingBy() 函数
+        val numbers23 = listOf("one", "two", "three", "four", "five", "six")
+        // eachCount() 计算每个组中的元素
+        // {o=1, t=2, f=2, s=1}
+        println(numbers23.groupingBy { it.first() }.eachCount())
+
+        // 13 取集合的一部分 https://www.kotlincn.net/docs/reference/collection-parts.html
+        // 13.1 Slice
+        // slice() 返回具有给定索引的集合元素列表。 索引既可以是作为区间传入的也可以是作为整数值的集合传入的。
+        val numbers24 = listOf("one", "two", "three", "four", "five", "six")
+        println(numbers24.slice(1..3))
+        println(numbers24.slice(0..4 step 2))
+        println(numbers24.slice(setOf(3, 5, 0)))
+
+        // 13.2 Take 与 drop
+        // 要从头开始【获取】指定数量的元素，请使用 take() 函数或 dropLast() 函数。
+        // 要从头或从尾【去除】给定数量的元素，请调用 drop() 或 dropLast() 函数。
+        val numbers25 = listOf("one", "two", "three", "four", "five", "six")
+        println(numbers25.take(3))// [one, two, three]
+        println(numbers25.takeLast(3))// [four, five, six]
+        println(numbers25.drop(1))// [two, three, four, five, six]
+        println(numbers25.dropLast(5))// [one]
+
+        val numbers26 = listOf("one", "two", "three", "four", "five", "six")
+        // takeWhile() 是带有谓词的 take()：它将不停获取元素直到排除与谓词匹配的首个元素。如果首个集合元素与谓词匹配，则结果为空。
+        println(numbers26.takeWhile { !it.startsWith('f') })//[one, two, three]
+        println(numbers26.takeLastWhile { it != "three" })//[four, five, six]
+        println(numbers26.dropWhile { it.length == 3 })//[three, four, five, six]
+        println(numbers26.dropLastWhile { it.contains('i') })//[one, two, three, four]
+
+        // 13.3 Chunked
+        // 要将集合分解为给定大小的“块”，请使用 chunked() 函数。
+        val numbers27 = (0..13).toList()
+        println(numbers27.chunked(3))
 
     }
 
