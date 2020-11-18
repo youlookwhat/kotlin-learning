@@ -19,14 +19,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /**Kotlin基础*/
+        // 类和属性
         bt_class.setOnClickListener { PersonActivity.start(this) }
+        // 枚举和when
         bt_enumwhen.setOnClickListener { WhenActivity.start(this) }
+        // while 和 for
         bt_while_for.setOnClickListener { WhileForActivity.start(this) }
-        bt_try_catch.setOnClickListener(View.OnClickListener { TryCatchActivity.start(this) })
-        bt_list_of.setOnClickListener(View.OnClickListener { SetOfActivity.start(this) })
+        // try catch 和 finally
+        bt_try_catch.setOnClickListener { TryCatchActivity.start(this) }
+
+        /**函数的定义与调用*/
+        // 在Kotlin中创建集合
+        bt_list_of.setOnClickListener { SetOfActivity.start(this) }
+
+        /**类、对象和接口*/
+        // 定义类的继承结构
         bt_class_object_interface.setOnClickListener { ObjectActivity.start(this) }
 
-//        kotlinDefine()
+        kotlinDefine()
 
     }
 
@@ -62,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         // 顶层赋值
         val PI = 3.14    // val
         var y = 0        // var
+
         // 不用写在方法体外面
         fun incrementX() {
             y += 1
