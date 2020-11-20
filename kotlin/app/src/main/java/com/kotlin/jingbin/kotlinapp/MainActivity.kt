@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun kotlinDefine() {
         // 1.hello world
         println("hello world kotlin!")
-        tv_content.setText("hello world kotlin!")
+        tv_content.text = "hello world kotlin!"
 
         // 2.函数
         // 网址

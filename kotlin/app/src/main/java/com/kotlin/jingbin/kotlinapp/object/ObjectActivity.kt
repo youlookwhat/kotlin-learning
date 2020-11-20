@@ -4,13 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import com.kotlin.jingbin.kotlinapp.R
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
+import java.io.Serializable
+import java.lang.IllegalArgumentException
+import kotlin.collections.arrayListOf as arrayListOf1
 
 /**
  * 4.1 定义类继承结构
  */
 class ObjectActivity : AppCompatActivity() {
+
+     var sss = "ddd"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -164,8 +170,128 @@ class ObjectActivity : AppCompatActivity() {
          * 同理，要被重写的属性和方法也必须被open修饰。
          */
 
+
+        /*--------------- 4.1.4 内部类和嵌套类：默认是嵌套类 -------------*/
+        // Kotlin 的嵌套类不能访问外部类的实例，除非你特别地做出了要求。
+        // 代码清单 9 声明一个包含可序列化状态的视图
+//        interface State : Serializable
+//        interface View {
+//            fun getCurrentState(): ObjectActivity.State
+//            fun restoreState(state: ObjectActivity.State) {}
+//        }
+        // 代码清单 4.10 用带内部类的 Java 代码来实现 View
+//    public class Button implements ObjectActivity.View {
+//
+//        @NotNull
+//        @Override
+//        public ObjectActivity.State getCurrentState() {
+//            return new ButtonState();
+//        }
+//
+//        @Override
+//        public void restoreState(@NotNull ObjectActivity.State state) {
+//
+//        }
+//
+//        public class ButtonState implements ObjectActivity.State {
+//        }
+//    }
+        /**
+         * 问题：
+         * 这个代码有什么问题？为什么你会得到一个 java io NotSerializable Exception : Button 异常，如果你试图序列化声明的按钮的状态？
+         * 这最开始可能会看起来奇怪：你序列化的变量是 ButtonState 类型的 state ，并不是 Button类型。
+         * 当你想起来这是在 Java 中时所有的事情都清楚了，当你在另个类中声明一个类时，它会默认变成内部类。这个例子中的 ButtonState 类隐式地存储了它的外
+         * 部Button 类的引用。这就解释了为什么 ButtonState 不能被序列化： Button不是可序列化的，并且它的引用破坏了 ButtonState 的序列化
+         * 要修复这个问题，你需要声明 ButtonState 类是 static 的。将一个嵌套类声明为 static 会从这个类中删除包围它的类的隐式引用。
+         */
+        // Kotlin 中，内部类的默认行为与我们刚刚描述的是相反的
+        // 代码清单4.11 在Kotlin中使用嵌套类实现View
+//        class Button4 : View {
+//            override fun getCurrentState(): State = ButtonState2()
+//            override fun restoreState(state: State) {}
+//
+//            // 这个类与Java中的静态嵌套类类似
+//            class ButtonState2 : State {}
+//
+//        }
+        /**
+         * 嵌套类和内部类在Java与Kotlin中的对应关系
+         * 类A在另一个类B中声明        在Java中           在Kotlin中
+         * 嵌套类(不存储外部类的引用)   static class A    class A
+         * 内部类(存储外部类的引用)     class A           inner class A
+         */
+
+        /*--------------- 4.1.5 密封类：定义受限的类继承结构 -------------*/
+        // 代码清单4.1.2 作为接口实现的表达试
+//        interface Expr
+//        class Num(val value: Int) : ObjectActivity.Expr
+//        class Sum(val left: ObjectActivity.Expr, val right: ObjectActivity.Expr) : ObjectActivity.Expr
+//
+//        fun eval(e: ObjectActivity.Expr): Int =
+//                when (e) {
+//                    is Num -> e.value
+//                    is Sum -> eval(e.right) + eval(e.left)
+//                    // 必须检查“else”分支
+//                    else -> throw IllegalArgumentException("Unknown expression")
+//                }
+
+        // 为解决else的情况，增加sealed类修饰符，对可能创建的子类做出了严格的限制。所有的直接子类必须嵌套在父类中。
+        // 代码清单4.1.3 作为密封类的表达式
+//        sealed class ExprS {
+//            // 将基类标记为密封的..
+//            class Num(val value: Int) : ObjectActivity.ExprS()
+//
+//            // 将所有可能的类作为嵌套类列出
+//            class sum(val left: ObjectActivity.ExprS, val right: ObjectActivity.ExprS) : ObjectActivity.ExprS()
+//        }
+//
+//        fun evalS(e: ObjectActivity.ExprS): Int =
+//                when (e) {
+//                    is ObjectActivity.ExprS.Num -> e.value
+//                    is ObjectActivity.ExprS.sum -> evalS(e.left) + evalS(e.right)
+//                }
+
+
     }
 
+    // 代码清单4.1.3 作为密封类的表达式
+    sealed class ExprS {
+        // 将基类标记为密封的..
+        class Num(val value: Int) : ExprS()
+
+        // 将所有可能的类作为嵌套类列出
+        class sum(val left: ExprS, val right: ExprS) : ExprS()
+    }
+
+    fun evalS(e: ExprS): Int =
+            when (e) {
+                is ExprS.Num -> e.value
+                is ExprS.sum -> evalS(e.left) + evalS(e.right)
+            }
+
+    // 代码清单4.1.2 作为接口实现的表达试
+    interface Expr
+    class Num(val value: Int) : Expr
+    class Sum(val left: Expr, val right: Expr) : Expr
+
+    fun eval(e: Expr): Int =
+            when (e) {
+                is Num -> e.value
+                is Sum -> eval(e.right) + eval(e.left)
+                // 必须检查“else”分支
+                else -> throw IllegalArgumentException("Unknown expression")
+            }
+
+
+    // 代码清单4.11 在Kotlin中使用嵌套类实现View
+    class Button4 : View {
+        override fun getCurrentState(): State = ButtonState2()
+        override fun restoreState(state: State) {}
+
+        // 这个类与Java中的静态嵌套类类似
+        class ButtonState2 : State {}
+
+    }
 
     // 代码清单 1 声明一个简单的接口
     interface Clickable {
@@ -185,6 +311,13 @@ class ObjectActivity : AppCompatActivity() {
     interface Focusable {
         fun setFocus(b: Boolean) = LogUtil.e("I ${if (b) "got" else "lost"} focus.")
         fun showOff() = LogUtil.e("I'm clickable!")
+    }
+
+    // 代码清单 9 声明一个包含可序列化状态的视图
+    interface State : Serializable
+    interface View {
+        fun getCurrentState(): State
+        fun restoreState(state: State) {}
     }
 
     companion object {
