@@ -3,8 +3,8 @@ package com.kotlin.jingbin.kotlinapp
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
-import com.kotlin.jingbin.kotlinapp.`object`.ObjectActivity
+import com.kotlin.jingbin.kotlinapp.`object`.Object1Activity
+import com.kotlin.jingbin.kotlinapp.`object`.Object2Activity
 import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         /**类、对象和接口*/
         // 定义类的继承结构
-        bt_class_object_interface.setOnClickListener { ObjectActivity.start(this) }
-
+        bt_class_object_interface.setOnClickListener { Object1Activity.start(this) }
+        bt_class_object_constructor.setOnClickListener { Object2Activity.start(this) }
         kotlinDefine()
 
     }

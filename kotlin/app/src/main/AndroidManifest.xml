@@ -24,7 +24,10 @@
         <activity android:name=".website.srart.habit.HabitUsageActivity" />
         <activity android:name=".basis.whilefor.WhileForActivity" />
         <activity android:name=".basis.trycatch.TryCatchActivity" />
-        <activity android:name=".object.ObjectActivity" />
+        <activity android:name=".object.Object1Activity" />
+        <activity android:name=".object.Object2Activity" />
+        <activity android:name=".object.Object3Activity" />
+        <activity android:name=".object.Object4Activity" />
         <activity android:name=".function.SetOfActivity" />
         <activity android:name=".website.ClassesAndObjectsActivity" />
         <activity android:name=".website.FunctionLambdaActivity" />

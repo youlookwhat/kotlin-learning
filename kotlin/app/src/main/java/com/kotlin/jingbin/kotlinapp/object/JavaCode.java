@@ -2,24 +2,42 @@ package com.kotlin.jingbin.kotlinapp.object;
 
 import org.jetbrains.annotations.NotNull;
 
-public class JavaCode {
+public class JavaCode implements Object2Activity.User9 {
+
+    @NotNull
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @NotNull
+    @Override
+    public String getEmail() {
+        return null;
+    }
 
     // 代码清单 4.10 用带内部类的 Java 代码来实现 View
-    public class Button implements ObjectActivity.View {
+    public class Button implements Object1Activity.View {
 
         @NotNull
         @Override
-        public ObjectActivity.State getCurrentState() {
+        public Object1Activity.State getCurrentState() {
             return new ButtonState();
         }
 
         @Override
-        public void restoreState(@NotNull ObjectActivity.State state) {
+        public void restoreState(@NotNull Object1Activity.State state) {
 
         }
 
-        public class ButtonState implements ObjectActivity.State {
+        public class ButtonState implements Object1Activity.State {
         }
+
+
+//        Object4Activity.CaseInsensitiveFileComparator.INSTANCE.compare()
     }
 
+    interface User {
+//        public String ddd;
+    }
 }

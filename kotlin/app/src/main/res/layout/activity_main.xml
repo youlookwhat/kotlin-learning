@@ -87,7 +87,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="在Kotlin中创建集合"
+        android:text="函数的定义与调用"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title2" />
@@ -111,5 +111,16 @@
         android:text="定义类的继承结构"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_class_object_constructor"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="声明一个带非默认构造方法后属性的类"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
         app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
 </android.support.constraint.ConstraintLayout>

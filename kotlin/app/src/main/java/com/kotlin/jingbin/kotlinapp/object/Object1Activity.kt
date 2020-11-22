@@ -4,17 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.TextView
 import com.kotlin.jingbin.kotlinapp.R
 import com.kotlin.jingbin.kotlinapp.utils.LogUtil
 import java.io.Serializable
-import java.lang.IllegalArgumentException
-import kotlin.collections.arrayListOf as arrayListOf1
 
 /**
  * 4.1 定义类继承结构
  */
-class ObjectActivity : AppCompatActivity() {
+class Object1Activity : AppCompatActivity() {
 
      var sss = "ddd"
 
@@ -323,7 +320,7 @@ class ObjectActivity : AppCompatActivity() {
     companion object {
         fun start(context: Context) {
             val intent = Intent()
-            intent.setClass(context, ObjectActivity::class.java)
+            intent.setClass(context, Object1Activity::class.java)
             context.startActivity(intent)
         }
     }
