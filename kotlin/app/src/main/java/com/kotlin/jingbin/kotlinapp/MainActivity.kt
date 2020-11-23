@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.kotlin.jingbin.kotlinapp.`object`.Object1Activity
 import com.kotlin.jingbin.kotlinapp.`object`.Object2Activity
+import com.kotlin.jingbin.kotlinapp.`object`.Object3Activity
+import com.kotlin.jingbin.kotlinapp.`object`.Object4Activity
 import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
+import com.kotlin.jingbin.kotlinapp.lambda.LambdaActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         // 定义类的继承结构
         bt_class_object_interface.setOnClickListener { Object1Activity.start(this) }
         bt_class_object_constructor.setOnClickListener { Object2Activity.start(this) }
+        bt_object_3.setOnClickListener { Object3Activity.start(this) }
+        bt_object_4.setOnClickListener { Object4Activity.start(this) }
+
+        /**Lambda编程*/
+        bt_lambda_1.setOnClickListener { LambdaActivity.start(this) }
+
         kotlinDefine()
 
     }

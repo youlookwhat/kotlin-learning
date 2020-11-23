@@ -1,126 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context="com.kotlin.jingbin.kotlinapp.MainActivity">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Hello World!"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.kotlin.jingbin.kotlinapp.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_title1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kotlin基础"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Hello World!"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_class"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="类和属性"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/bt_enumwhen"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
+        <TextView
+            android:id="@+id/tv_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kotlin基础"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_enumwhen"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="枚举和when"
-        android:textAllCaps="false"
-        app:layout_constraintLeft_toRightOf="@+id/bt_class"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_class"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="类和属性"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/bt_enumwhen"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_while_for"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="while 和 for"
-        android:textAllCaps="false"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/bt_try_catch"
-        app:layout_constraintTop_toBottomOf="@+id/bt_enumwhen" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_enumwhen"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="枚举和when"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toRightOf="@+id/bt_class"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title1" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_try_catch"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="try catch 和 finally"
-        android:textAllCaps="false"
-        app:layout_constraintLeft_toRightOf="@+id/bt_while_for"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_enumwhen" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_while_for"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="while 和 for"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/bt_try_catch"
+            app:layout_constraintTop_toBottomOf="@+id/bt_enumwhen" />
 
-    <TextView
-        android:id="@+id/tv_title2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="函数的定义与调用"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_try_catch" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_try_catch"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="try catch 和 finally"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toRightOf="@+id/bt_while_for"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_enumwhen" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_list_of"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="函数的定义与调用"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title2" />
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="函数的定义与调用"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_try_catch" />
 
-    <TextView
-        android:id="@+id/tv_title3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="类、对象和接口"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_list_of" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_list_of"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="函数的定义与调用"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title2" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_class_object_interface"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="定义类的继承结构"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+        <TextView
+            android:id="@+id/tv_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="类、对象和接口"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_list_of" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/bt_class_object_constructor"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="声明一个带非默认构造方法后属性的类"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_class_object_interface"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="定义类的继承结构"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_class_object_constructor"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="声明一个带非默认构造方法后属性的类"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_object_3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="编译器生成的方法：数据类和类委托"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_object_4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="“ject”关键字：将声明一个类与创建一个实例结合起来"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <TextView
+            android:id="@+id/tv_title4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lambda编程"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_list_of" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_lambda_1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lambda表达式和成员引用"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+    </LinearLayout>
+</ScrollView>
