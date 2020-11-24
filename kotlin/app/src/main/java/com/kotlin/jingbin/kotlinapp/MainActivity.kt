@@ -12,7 +12,8 @@ import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
-import com.kotlin.jingbin.kotlinapp.lambda.LambdaActivity
+import com.kotlin.jingbin.kotlinapp.lambda.Lambda1Activity
+import com.kotlin.jingbin.kotlinapp.lambda.Lambda2Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -43,7 +44,8 @@ class MainActivity : AppCompatActivity() {
         bt_object_4.setOnClickListener { Object4Activity.start(this) }
 
         /**Lambda编程*/
-        bt_lambda_1.setOnClickListener { LambdaActivity.start(this) }
+        bt_lambda_1.setOnClickListener { Lambda1Activity.start(this) }
+        bt_lambda_2.setOnClickListener { Lambda2Activity.start(this) }
 
         kotlinDefine()
 

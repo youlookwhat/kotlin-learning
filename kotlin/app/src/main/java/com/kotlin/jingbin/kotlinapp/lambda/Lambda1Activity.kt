@@ -5,13 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
-import com.kotlin.jingbin.kotlinapp.lambda.LambdaActivity.Person
 import kotlinx.android.synthetic.main.activity_lambda.*
 
 /**
  * 5.1 Lambda表达式和成员引用
  * */
-class LambdaActivity : AppCompatActivity() {
+class Lambda1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -224,7 +223,7 @@ class LambdaActivity : AppCompatActivity() {
     companion object {
         fun start(context: Context) {
             val intent = Intent()
-            intent.setClass(context, LambdaActivity::class.java)
+            intent.setClass(context, Lambda1Activity::class.java)
             context.startActivity(intent)
         }
     }

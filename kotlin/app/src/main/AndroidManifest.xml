@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lambda.LambdaActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +32,8 @@
         <activity android:name=".website.ClassesAndObjectsActivity" />
         <activity android:name=".website.FunctionLambdaActivity" />
         <activity android:name=".website.CollectionActivity" />
+        <activity android:name=".lambda.Lambda1Activity" />
+        <activity android:name=".lambda.Lambda2Activity" />
     </application>
 
 </manifest>

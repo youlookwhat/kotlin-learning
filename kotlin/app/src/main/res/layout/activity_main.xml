@@ -171,5 +171,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
             app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_lambda_2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="集合的函数式API"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
     </LinearLayout>
 </ScrollView>
