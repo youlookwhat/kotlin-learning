@@ -108,7 +108,7 @@
             app:layout_constraintTop_toBottomOf="@+id/bt_list_of" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bt_class_object_interface"
+            android:id="@+id/bt_object_1"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bt_class_object_constructor"
+            android:id="@+id/bt_object_2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -178,6 +178,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="集合的函数式API"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_lambda_3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="惰性集合操作：序列"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_lambda_4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="使用Java函数式调用接口"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"

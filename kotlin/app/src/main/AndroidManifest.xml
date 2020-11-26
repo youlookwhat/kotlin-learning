@@ -34,6 +34,8 @@
         <activity android:name=".website.CollectionActivity" />
         <activity android:name=".lambda.Lambda1Activity" />
         <activity android:name=".lambda.Lambda2Activity" />
+        <activity android:name=".lambda.Lambda3Activity" />
+        <activity android:name=".lambda.Lambda4Activity" />
     </application>
 
 </manifest>

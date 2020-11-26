@@ -210,8 +210,13 @@ class Object4Activity : AppCompatActivity() {
 
     // 代码清单4.23 使用对象来实现 Comparator
     object CaseInsensitiveFileComparator : Comparator<File> {
-        override fun compare(o1: File, o2: File): Int {
-            return o1.parent.compareTo(o2.path, ignoreCase = true)
+        override fun compare(o1: File?, o2: File?): Int {
+            if (o1 != null && o1.parent != null) {
+                if (o2 != null) {
+                    return o1.parent.compareTo(o2.path, ignoreCase = true)
+                }
+            }
+            return 1
         }
     }
 

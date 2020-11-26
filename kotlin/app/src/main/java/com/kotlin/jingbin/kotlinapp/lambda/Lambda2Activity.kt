@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
-import kotlinx.android.synthetic.main.activity_lambda.*
-import java.util.*
 
 /**
  * 5.2 集合的函数式API
@@ -106,8 +104,17 @@ class Lambda2Activity : AppCompatActivity() {
 
         /*--------------- 5.2.4 flatMap 和 flatten：处理嵌套集合中的元素-------------*/
         data class Book(val title: String, val authors: List<String>)
+
+        val books = listOf(Book("三体", listOf("刘慈欣", "刘德华")), Book("我的世界", listOf("刘慈欣", "韩寒")))
         // 统计图书馆中的所有作者的set
-        
+        // 每本书都可能有多个作者，属性book.authors存储了每本书籍的作者集合。flatMap函数把所有书籍的作者合并成了一个扁平的列表。
+        // toSet调动移除了集合中所有重复的元素
+        println(books.flatMap { it.authors }.toSet())// [刘慈欣, 刘德华, 韩寒]
+        // 如果不需要任何变换，只是平铺一个集合 使用flatten
+
+        /**flatMap做了两件事：首页根根据作为实参给定的函数对集合中的每个元素做变换(或者说映射)，然后把多个列表合并(或者说平铺)成一个列表。*/
+        val listOf2 = listOf("abc", "def")
+        println(listOf2.flatMap { it.toList() })// [a, b, c, d, e, f]
     }
 
     //    data class Book(val title: String, val authors: List<String>)

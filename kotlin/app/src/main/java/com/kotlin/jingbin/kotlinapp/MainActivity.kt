@@ -14,6 +14,8 @@ import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.lambda.Lambda1Activity
 import com.kotlin.jingbin.kotlinapp.lambda.Lambda2Activity
+import com.kotlin.jingbin.kotlinapp.lambda.Lambda3Activity
+import com.kotlin.jingbin.kotlinapp.lambda.Lambda4Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,14 +40,16 @@ class MainActivity : AppCompatActivity() {
 
         /**类、对象和接口*/
         // 定义类的继承结构
-        bt_class_object_interface.setOnClickListener { Object1Activity.start(this) }
-        bt_class_object_constructor.setOnClickListener { Object2Activity.start(this) }
+        bt_object_1.setOnClickListener { Object1Activity.start(this) }
+        bt_object_2.setOnClickListener { Object2Activity.start(this) }
         bt_object_3.setOnClickListener { Object3Activity.start(this) }
         bt_object_4.setOnClickListener { Object4Activity.start(this) }
 
         /**Lambda编程*/
         bt_lambda_1.setOnClickListener { Lambda1Activity.start(this) }
         bt_lambda_2.setOnClickListener { Lambda2Activity.start(this) }
+        bt_lambda_3.setOnClickListener { Lambda3Activity.start(this) }
+        bt_lambda_4.setOnClickListener { Lambda4Activity.start(this) }
 
         kotlinDefine()
 
