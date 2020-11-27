@@ -4,6 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class JavaCode implements Object2Activity.User9 {
 
+    public void postponeComputation(int delay,Runnable computation){
+
+    }
+
     @NotNull
     @Override
     public String getName() {

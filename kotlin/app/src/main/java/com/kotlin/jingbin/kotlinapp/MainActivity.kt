@@ -12,10 +12,7 @@ import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
-import com.kotlin.jingbin.kotlinapp.lambda.Lambda1Activity
-import com.kotlin.jingbin.kotlinapp.lambda.Lambda2Activity
-import com.kotlin.jingbin.kotlinapp.lambda.Lambda3Activity
-import com.kotlin.jingbin.kotlinapp.lambda.Lambda4Activity
+import com.kotlin.jingbin.kotlinapp.lambda.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         bt_lambda_2.setOnClickListener { Lambda2Activity.start(this) }
         bt_lambda_3.setOnClickListener { Lambda3Activity.start(this) }
         bt_lambda_4.setOnClickListener { Lambda4Activity.start(this) }
+        bt_lambda_5.setOnClickListener { Lambda5Activity.start(this) }
 
         kotlinDefine()
 
