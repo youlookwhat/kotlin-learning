@@ -14,7 +14,7 @@
  - [2.Kotlin 基础](https://github.com/youlookwhat/kotlin-learning/blob/master/2.Kotlin%20%E5%9F%BA%E7%A1%80.md)
  - [3.函数的定义和目的](https://github.com/youlookwhat/kotlin-learning/blob/master/3.%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%B0%83%E7%94%A8.md)
  - [4.类、对象和接口](https://github.com/youlookwhat/kotlin-learning/blob/master/4.%E7%B1%BB%E3%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3.md)
- - 5.lambda 编程
+ - [5.lambda 编程](https://github.com/youlookwhat/kotlin-learning/blob/master/5.lambda%20%E7%BC%96%E7%A8%8B.md)
  - 6.Kotlin 的类型系统
 
 ## 1.Kotlin: 定义和目的
