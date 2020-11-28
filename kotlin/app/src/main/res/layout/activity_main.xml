@@ -157,9 +157,7 @@
             android:text="Lambda编程"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_list_of" />
+            android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_lambda_1"
@@ -167,10 +165,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lambda表达式和成员引用"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+            android:textAllCaps="false" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_lambda_2"
@@ -178,10 +173,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="集合的函数式API"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+            android:textAllCaps="false" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_lambda_3"
@@ -189,10 +181,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="惰性集合操作：序列"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+            android:textAllCaps="false" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_lambda_4"
@@ -200,10 +189,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="使用Java函数式调用接口"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+            android:textAllCaps="false" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_lambda_5"
@@ -211,9 +197,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="带接收者的lambda: “with”与“apply”"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_class_object_interface"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title3" />
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/tv_title5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kotlin的类型系统"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_type_1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="可空性"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

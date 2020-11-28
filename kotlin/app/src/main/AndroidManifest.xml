@@ -37,6 +37,7 @@
         <activity android:name=".lambda.Lambda3Activity" />
         <activity android:name=".lambda.Lambda4Activity" />
         <activity android:name=".lambda.Lambda5Activity" />
+        <activity android:name=".typesystom.TypeSystem1Activity"/>
     </application>
 
 </manifest>

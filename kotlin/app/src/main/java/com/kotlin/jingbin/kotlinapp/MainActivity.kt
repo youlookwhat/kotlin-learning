@@ -13,6 +13,7 @@ import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.lambda.*
+import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem1Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         bt_lambda_3.setOnClickListener { Lambda3Activity.start(this) }
         bt_lambda_4.setOnClickListener { Lambda4Activity.start(this) }
         bt_lambda_5.setOnClickListener { Lambda5Activity.start(this) }
+
+        /**Kotlin的类型系统*/
+        bt_type_1.setOnClickListener { TypeSystem1Activity.start(this) }
 
         kotlinDefine()
 
