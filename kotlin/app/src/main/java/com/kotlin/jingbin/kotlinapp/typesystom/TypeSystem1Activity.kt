@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
+import com.kotlin.jingbin.kotlinapp.`object`.JavaCode
 
 /**
  * 6.1 可空性
@@ -300,6 +301,74 @@ class TypeSystem1Activity : AppCompatActivity() {
 //        printHashCode2(null)
 
         /**-------------------- 6.1.11 可空性和Java ----------------------*/
+
+        // Java中的 @Nullable String 被Kotlin当做 String?，而@NotNull String就是String
+        // @Nullable + Type = Type?
+        // @NotNull + Type = Type
+
+        /*
+        * 平台类型
+        * 平台类型本质上就是Kotlin不知道可空性信息的类型。
+        * Type(Java) = Type? or Type  (Kotlin)
+        */
+
+        //代码清单6.15 没有可空性注解的 Java 类
+        /*
+         * public  class Person {
+
+            private final String name;
+
+            public Person(String name) {
+                this.name = name;
+            }
+
+            public String getName() {
+                return name;
+            }
+        }
+         */
+        // getName()能不能返回null? Kotlin编译器不知道可空性，需要自己处理它
+
+        //代码清单6.16 不使用null检查访问Java类
+        fun yellAt(person: JavaCode.PersonJava) {
+            println(person.name.toUpperCase() + "!!!")
+        }
+//        yellAt(JavaCode.PersonJava(null)) // 会有异常
+
+        // 代码清单6.17 使用null 检查来访问Java类
+        fun yellAtSafe(person: JavaCode.PersonJava) {
+            println((person.name ?: "Anyone").toUpperCase() + "!!!")
+        }
+        yellAtSafe(JavaCode.PersonJava(null))// Anyone!!!
+
+        // 这两种都是可以的
+        val person6 = JavaCode.PersonJava("222")
+        val s: String? = person6.name
+        val s1: String = person6.name
+
+
+        /**继承*/
+        // 代码清单6.18 使用String参数的Java接口
+        /*Java*/
+//        public  interface StringProcess {
+//            void process(String value);
+//        }
+
+        // 代码清单6.19 实现Java接口时使用不同的参数可空性
+        class StringPrint : JavaCode.StringProcess {
+            override fun process(value: String) {
+
+            }
+        }
+
+        class StringPrint2 : JavaCode.StringProcess {
+            override fun process(value: String?) {
+                if (value != null) {
+                    println(value)
+                }
+            }
+        }
+
 
     }
 

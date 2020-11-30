@@ -14,6 +14,8 @@ import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.lambda.*
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem1Activity
+import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem2Activity
+import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem3Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -52,6 +54,8 @@ class MainActivity : AppCompatActivity() {
 
         /**Kotlin的类型系统*/
         bt_type_1.setOnClickListener { TypeSystem1Activity.start(this) }
+        bt_type_2.setOnClickListener { TypeSystem2Activity.start(this) }
+        bt_type_3.setOnClickListener { TypeSystem3Activity.start(this) }
 
         kotlinDefine()
 

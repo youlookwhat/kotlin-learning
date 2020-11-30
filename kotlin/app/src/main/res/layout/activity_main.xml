@@ -215,5 +215,21 @@
             android:layout_height="wrap_content"
             android:text="可空性"
             android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_type_2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="基本数据类型和其他基本类型"
+            android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_type_3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="集合与数组"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

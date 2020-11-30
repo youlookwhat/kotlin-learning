@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class JavaCode implements Object2Activity.User9 {
 
-    public void postponeComputation(int delay,Runnable computation){
+    public void postponeComputation(int delay, Runnable computation) {
 
     }
 
@@ -44,4 +44,24 @@ public class JavaCode implements Object2Activity.User9 {
     interface User {
 //        public String ddd;
     }
+
+    public static class PersonJava {
+
+        private final String name;
+
+        public PersonJava(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+    }
+
+    public static interface StringProcess {
+        void process(String value);
+    }
+
+
 }

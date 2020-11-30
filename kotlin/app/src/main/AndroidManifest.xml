@@ -38,6 +38,8 @@
         <activity android:name=".lambda.Lambda4Activity" />
         <activity android:name=".lambda.Lambda5Activity" />
         <activity android:name=".typesystom.TypeSystem1Activity"/>
+        <activity android:name=".typesystom.TypeSystem2Activity"/>
+        <activity android:name=".typesystom.TypeSystem3Activity"/>
     </application>
 
 </manifest>
