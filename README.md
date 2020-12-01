@@ -15,7 +15,7 @@
  - [3.函数的定义和目的](https://github.com/youlookwhat/kotlin-learning/blob/master/3.%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%B0%83%E7%94%A8.md)
  - [4.类、对象和接口](https://github.com/youlookwhat/kotlin-learning/blob/master/4.%E7%B1%BB%E3%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3.md)
  - [5.lambda 编程](https://github.com/youlookwhat/kotlin-learning/blob/master/5.lambda%20%E7%BC%96%E7%A8%8B.md)
- - 6.Kotlin 的类型系统
+ - [6.Kotlin 的类型系统](https://github.com/youlookwhat/kotlin-learning/blob/master/6.kotlin%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F.md)
 
 ## 1.Kotlin: 定义和目的
 本章内容包括：
@@ -116,6 +116,28 @@
 - 可以把 lambda 作为实参传给接 Java 函数式接口（带单抽象方法的接口，也叫作 SAM 接口）作为形参的方法。
 - 带接收者的 lambda 种特殊的 lambda ，可以在这种 lambda 中直接访问一个特殊接收者对象的方法。
 - with 标准库函数允许你调用同一个对象的多个方法，而不需要反复写出这个对象的引用 apply 函数让你使用构建者风格的 API 创建和初始化任何对象
+
+
+## 6.Kotlin 的类型系统
+
+本章内容包括：
+> - 处理 null 的可空类型和语法
+> - 基本数据类型和它们对应的Java类型
+> - Kotlin 的集合，以及它们和Java的关系
+
+### 总结
+- Kotlin 对可空类型的支持，可以帮助我们在编译期，检测出潜在的NullPointerException错误。
+- Kotlin 提供了像安全调用（？．）、 Elvis 运算符（？：）、非 言（ ！！）及let 函数这样的工具来简洁地处理可空类型。
+- as ？运算符提供了 种简单的方式来把值转换成 个类型，以及处理当它拥有不同类型时的情况。
+- Java 中的类型在 Kotlin 中被解释成平台类型，允许开发者把它们当作可空或非空来对待。
+- 表示基本数字的类型（如 Int ）看起来用起来都像普通的类，但通常会被编译成 Java 基本数据类型。
+- 可空的基本数据类型（如 Int ？）对应着 Java 中的装箱基本数据类型（如java.lang.Integer ）。
+- Any 类型是所有其他类型的超类型，类 Java Object 。而 Unit 类比于void
+- 不会正常终止的函数使用 Nothing 类型作为返回类型。
+- Kotlin 使用标准 Java 集合类，并通过区分只读和可变集合来增强它们。
+- 当你在 Kotlin 中继承 Java 类或者实现 Java 接口时，你需要仔细考虑参数的可空性和可变性。
+- Kotlin的Array 类就像普通的泛型类 但它会被编译成 Java 数组。
+- 基本数据类型的数组使用像 IntArray 这样的特殊类来表示。
 
 [1]:https://book.douban.com/subject/27093660/
 [2]:https://github.com/JetBrains/kotlin
