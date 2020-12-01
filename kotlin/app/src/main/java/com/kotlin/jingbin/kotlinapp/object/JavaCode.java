@@ -2,6 +2,9 @@ package com.kotlin.jingbin.kotlinapp.object;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.util.List;
+
 public class JavaCode implements Object2Activity.User9 {
 
     public void postponeComputation(int delay, Runnable computation) {
@@ -63,5 +66,20 @@ public class JavaCode implements Object2Activity.User9 {
         void process(String value);
     }
 
+    public static class CollectionUtils {
+        public static List<String> uppercaseAll(List<String> items) {
+            for (int i = 0; i < items.size(); i++) {
+                items.set(i, items.get(i).toLowerCase());
+            }
+            return items;
+        }
+    }
 
+    public interface FileContentProcessor {
+        void processContents(File path, byte[] binaryContents, List<String> textContents);
+    }
+
+    public interface DataParser<T> {
+        void parseData(String input, List<T> output, List<String> errors);
+    }
 }

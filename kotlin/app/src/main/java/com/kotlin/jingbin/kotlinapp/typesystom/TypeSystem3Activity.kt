@@ -5,7 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
+import com.kotlin.jingbin.kotlinapp.`object`.JavaCode
+import com.kotlin.jingbin.kotlinapp.`object`.Object4Activity
 import java.io.BufferedReader
+import java.io.File
 import java.io.StringReader
 import java.lang.NumberFormatException
 
@@ -100,7 +103,100 @@ class TypeSystem3Activity : AppCompatActivity() {
 
 
         /**-------------------- 6.3.3 Kotlin集合和Java ----------------------*/
+        /*
+        * 集合创建函数
+        * 集合类型    只读                可变
+        * List      listOf          mutableListOf、arrayListOf
+        * Set       setOf           mutableSetOf、hashSet、linkedSetOf、sortedSetOf
+        * Map       mapOf           mutableMapOf、hashMapOf、linkedMapOf、sortMapOf
+        *
+        * Java并不会区分只读集合与可变集合，即使Kotlin中把集合声明成只读的，Java代码页能够修改这个集合。
+        */
 
+        /*Java*/
+//        public static class CollectionUtils {
+//            public static List<String> uppercaseAll(List<String> items) {
+//                for (int i = 0; i < items.size(); i++) {
+//                    items.set(i, items.get(i).toLowerCase());
+//                }
+//                return items;
+//            }
+//        }
+
+        // 声明只读的参数
+        fun printInUppercase(list: List<String>) {
+            // 调用可以修改集合的Java函数
+            println(JavaCode.CollectionUtils.uppercaseAll(list))
+            // 打印被修改过的函数
+            println(list.first())
+        }
+
+        val listOf = listOf("a", "b", "c")
+        printInUppercase(listOf)// [A,B,C] A
+
+
+        /**-------------------- 6.3.4 作为平台类型的集合 ----------------------*/
+        /*
+        * 集合是否可空？
+        * 集合中的元素是否可空？
+        * 你的方法会不会修改集合？
+        */
+
+        // 代码清单6.25 使用集合参数的Java接口r
+//        public interface FileContentProcessor {
+//            void processContents(File path, byte[] binaryContents, List<String> textContents);
+//        }
+
+        // 代码清单6.26 FileContentProcessor的kotlin实现
+        class FileIndexer : JavaCode.FileContentProcessor {
+            override fun processContents(path: File, binaryContents: ByteArray?, textContents: MutableList<String>?) {
+
+            }
+        }
+
+        // 代码清单6.27 另一个使用集合参数的Java接口
+//        public interface DataParser<T> {
+//            void parseData(String input, List<T> output, List<String> errors);
+//        }
+
+        // 代码清单6.28 DataParser的kotlin实现
+        class PersonParser : JavaCode.DataParser<Object4Activity.Person> {
+            override fun parseData(input: String, output: MutableList<Object4Activity.Person>, errors: MutableList<String?>?) {
+                // 默认是都会为空、集合元素不为空、方法会修改集合。
+                // 需要根据具体场景配置设置
+            }
+        }
+
+
+        /**-------------------- 6.3.5 对象和基本数据类型的数组 ----------------------*/
+        fun main(args: Array<String>) {
+            // 使扩展属性 array.indices 在下标的范围内迭代
+            for (i in args.indices) {
+                // 通过下标使用array[index]访问元素
+                println("Argument $i is: ${args[i]}")
+            }
+        }
+
+        // 代码清单6.30 创建字符数组
+        val array = Array<String>(26) { i -> ('a' + i).toString() }
+        println(array.joinToString(""))// abcd...
+
+        // 代码清单6.31 向vararg方法传递集合
+        val listOf1 = listOf("a", "b", "c")
+        // 期望vararg参数时使用展开运算符 (*) 传递数组
+        println("%s%s%s".format(*listOf1.toTypedArray()))
+
+        // 创建存储了5个0的整型数组的两种选择：
+        val fiveZeros = IntArray(5)
+        val intArrayOf = intArrayOf(0, 0, 0, 0, 0)
+        // 接收lambda的构造方法的例子
+        val intArray = IntArray(5) { i -> (i + 1) * (i + 1) }
+        println(intArray.joinToString())// 1,4,9,16,25
+
+        // 代码清单6.32 对数组使用 forEachIndexed
+        fun main2(args: Array<String>) {
+            args.forEachIndexed { index, element -> println("Argument $index is: $element !!!!") }
+        }
     }
 
     companion object {
