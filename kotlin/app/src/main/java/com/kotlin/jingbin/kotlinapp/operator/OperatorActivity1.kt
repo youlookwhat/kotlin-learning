@@ -85,6 +85,23 @@ class OperatorActivity1 : AppCompatActivity() {
         println(0x1 shl 4)// 16
 
         /**-------------------- 7.1.2 重载复合赋值运算符 ----------------------*/
+        // 对可变变量var有效，例子：
+        var point1 = Point(1, 2)
+        point1 += Point(1, 1)
+        println(point1)// Point(x=2,y=3)
+
+        // 将元素添加到可变集合，例子：
+        val numbers = ArrayList<Int>()
+        numbers += 42
+        println(numbers[0])// 42
+
+        /*
+        * 如果你定义了一个返回值 Unit，名为plusAssign函数，Kotlin将会在用到+=运算符的地方调用它。
+        * 其他如 minusAssign、timeAssign
+        */
+        operator fun <T> MutableCollection<T>.plusAssign(element: T) {
+            this.add(element)
+        }
     }
 
     companion object {
