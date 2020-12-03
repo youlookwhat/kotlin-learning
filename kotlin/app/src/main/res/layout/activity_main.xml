@@ -231,5 +231,21 @@
             android:layout_height="wrap_content"
             android:text="集合与数组"
             android:textAllCaps="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运算符重载及其他约定"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_operator_1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="重载算术运算符"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>
