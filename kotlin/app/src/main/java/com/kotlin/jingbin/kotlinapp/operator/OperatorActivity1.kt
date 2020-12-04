@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
+import java.math.BigDecimal
 
 /**
  * 7.1 运算符
@@ -102,6 +103,51 @@ class OperatorActivity1 : AppCompatActivity() {
         operator fun <T> MutableCollection<T>.plusAssign(element: T) {
             this.add(element)
         }
+
+        /*
+        * a += b
+        * a = a.plus(b)
+        * a.plusAssign(b)
+        * 运算符 += 可以被转换为plus或者plusAssign函数的调用
+        * + 和 - 运算符总是返回一个新的集合。
+        * +=和-=运算符用于可变集合时，始终就地修改它们，用于只读集合时，会返回一个修改过的副本。
+        */
+        val list = arrayListOf(1, 2)
+        list += 3
+
+        val newList = list + listOf(4, 5)
+        println(list)// 就地修改 [1,2,3]
+        println(newList)// 新的集合 [1,2,3,4,5]
+
+
+        /**-------------------- 7.1.3 重载一元运算符 ----------------------*/
+        // 代码清单7.5 定义一个一元运算符
+        operator fun Point.unaryMinus(): Point {
+            // 一元运算符无参数
+            return Point(-x, -y)
+        }
+
+        val point4 = Point(10, 20)
+        println(-point4)// Point(x=-10,y=-20)
+
+        /*
+        * +a  --   a.unaryPlus()
+        * 一元运算符 + 被转换为unaryPlus函数的调用
+        * 可重载的一元算法的运算符
+        * 表达式   函数名
+        * +a      unaryPlus
+        * -a      unaryMinus
+        * !a      not
+        * ++a,a++ inc
+        * --a,a-- dec
+        */
+
+        // 代码清单7.6 定义一个自增运算符
+        operator fun BigDecimal.inc() = this + BigDecimal.ONE
+
+        var db = BigDecimal.ZERO
+        println(db++)// 0  在执行后添加
+        println(++db)// 2  在执行前添加
     }
 
     companion object {
