@@ -10,7 +10,7 @@ import java.math.BigDecimal
 /**
  * 7.1 运算符
  * */
-class OperatorActivity1 : AppCompatActivity() {
+class Operator1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -153,7 +153,7 @@ class OperatorActivity1 : AppCompatActivity() {
     companion object {
         fun start(context: Context) {
             val intent = Intent()
-            intent.setClass(context, OperatorActivity1::class.java)
+            intent.setClass(context, Operator1Activity::class.java)
             context.startActivity(intent)
         }
     }

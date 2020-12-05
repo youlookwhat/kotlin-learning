@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.kotlin.jingbin.kotlinapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +42,9 @@
         <activity android:name=".typesystom.TypeSystem1Activity" />
         <activity android:name=".typesystom.TypeSystem2Activity" />
         <activity android:name=".typesystom.TypeSystem3Activity" />
-        <activity android:name=".operator.OperatorActivity1" />
+        <activity android:name=".operator.Operator1Activity" />
+        <activity android:name=".operator.Operator2Activity" />
+        <activity android:name=".operator.Operator3Activity" />
     </application>
 
 </manifest>
