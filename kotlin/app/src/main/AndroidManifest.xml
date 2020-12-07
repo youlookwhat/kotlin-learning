@@ -45,6 +45,8 @@
         <activity android:name=".operator.Operator1Activity" />
         <activity android:name=".operator.Operator2Activity" />
         <activity android:name=".operator.Operator3Activity" />
+        <activity android:name=".operator.Operator4Activity" />
+        <activity android:name=".operator.Operator5Activity" />
     </application>
 
 </manifest>

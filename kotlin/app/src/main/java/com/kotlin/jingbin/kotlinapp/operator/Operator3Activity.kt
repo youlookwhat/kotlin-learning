@@ -99,27 +99,48 @@ class Operator3Activity : AppCompatActivity() {
             val closedRange = now..now.plusDays(10)
             // 检测一个特定的日期是否属于这个区间
             println(now.plusWeeks(1) in closedRange) // true
-        }
-        // rangeTo 运算符的优先级低于算术运算符，但是最好把参数括起来
-        val n = 9
-        println(0..(n + 1))// 0..10
 
-        (0..9).forEach {
-            // 把区间括起来，来调用它的方法
-            println(it)// 0123456789
-        }
+            // rangeTo 运算符的优先级低于算术运算符，但是最好把参数括起来
+            val n = 9
+            println(0..(n + 1))// 0..10
+
+            (0..9).forEach {
+                // 把区间括起来，来调用它的方法
+                println(it)// 0123456789
+            }
 
 
-        /**-------------------- 7.3.4 在 for 循环中使用 iterator 的约定 ----------------------*/
-        // in 在for循环中使用被执行迭代，转换成 list.iterator()
-        // 这个库函数让迭代字符串成为可能
+            /**-------------------- 7.3.4 在 for 循环中使用 iterator 的约定 ----------------------*/
+            // in 在for循环中使用被执行迭代，转换成 list.iterator()
+            // 这个库函数让迭代字符串成为可能
 //         operator fun CharSequence.iterator():CharIterator
-        for (c in "abc") {
-            println(c)
+            for (c in "abc") {
+                println(c)
+            }
+
+            // 代码清单7.13 实现日期区间的迭代器
+            operator fun ClosedRange<LocalDate>.iterator(): Iterator<LocalDate> =
+                    // 这个对象实现了遍历LocalDate元素的Iterator
+                    object : Iterator<LocalDate> {
+                        var current = start
+
+                        // 注意，这里日期用到了compareTo约定
+                        override fun hasNext() = current <= endInclusive
+
+                        // 在修改前返回当前日期作为结果
+                        override fun next() = current.apply {
+                            // 把当前日期增加一天
+                            current = plusDays(1)
+                        }
+                    }
+
+            val ofYearDay = LocalDate.ofYearDay(2017, 1)
+//            val dayOff = ofYearDay.minusDays(1)..newYear()
+            // 对应的 iterator函数实现后，遍历daysOff
+//            for (dayOff in daysOff) {
+//                println(dayOff)
+//            }
         }
-
-        // 代码清单7.13 实现日期区间的迭代器
-
 
     }
 

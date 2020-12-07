@@ -263,5 +263,21 @@
             android:layout_height="wrap_content"
             android:text="集合与区间的约定"
             android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_operator_4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="解构声明和组件函数"
+            android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_operator_5"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="重用属性访问的逻辑：委托属性"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

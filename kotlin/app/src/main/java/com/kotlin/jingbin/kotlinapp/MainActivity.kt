@@ -13,9 +13,7 @@ import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.lambda.*
-import com.kotlin.jingbin.kotlinapp.operator.Operator1Activity
-import com.kotlin.jingbin.kotlinapp.operator.Operator2Activity
-import com.kotlin.jingbin.kotlinapp.operator.Operator3Activity
+import com.kotlin.jingbin.kotlinapp.operator.*
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem1Activity
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem2Activity
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem3Activity
@@ -64,6 +62,8 @@ class MainActivity : AppCompatActivity() {
         bt_operator_1.setOnClickListener { Operator1Activity.start(this) }
         bt_operator_2.setOnClickListener { Operator2Activity.start(this) }
         bt_operator_3.setOnClickListener { Operator3Activity.start(this) }
+        bt_operator_4.setOnClickListener { Operator4Activity.start(this) }
+        bt_operator_5.setOnClickListener { Operator5Activity.start(this) }
 
         kotlinDefine()
 
