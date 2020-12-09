@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
 import java.beans.PropertyChangeListener
 import java.beans.PropertyChangeSupport
-import java.lang.reflect.Type
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -271,6 +270,21 @@ class Operator5Activity : AppCompatActivity() {
             val name: String by _attributes
         }
 
+        /**-------------------- 7.5.6 框架中的委托属性 ----------------------*/
+        // 代码清单7.27 使用委托属性来访问数据库列
+        // user 对应数据库中的表
+//        object Users : IdTable() {
+        // name 和 age 对应数据库表的列
+//            val name: varchar("name", length = 50).index()
+//            val age = ingeter("age")
+//        }
+
+        // 每一个User示例对应表中的一个实体
+//        class User(id: EntityID) : Entity(id) {
+        // name 的值是数据库中对应那个用户的值
+//            var name: String by Users.name
+//            var age: Int by Users.age
+//        }
     }
 
     // 代码清单7.19 使用 PropertyChangeSupport 的工具类

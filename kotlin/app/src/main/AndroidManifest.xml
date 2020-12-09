@@ -47,6 +47,7 @@
         <activity android:name=".operator.Operator3Activity" />
         <activity android:name=".operator.Operator4Activity" />
         <activity android:name=".operator.Operator5Activity" />
+        <activity android:name=".lambdahigher.LambdaHigherActivity" />
     </application>
 
 </manifest>
