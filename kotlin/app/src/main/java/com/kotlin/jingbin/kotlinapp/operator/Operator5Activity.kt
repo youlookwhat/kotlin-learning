@@ -253,6 +253,24 @@ class Operator5Activity : AppCompatActivity() {
                 get() = _attributes["name"]!!
         }
 
+        val p6 = Person6()
+        val data = mapOf("name" to "jingbin", "company" to "ali")
+        for ((attrName, value) in data) {
+            p6.setAttribute(attrName, value)
+        }
+        println(p.name) // jingbin
+
+        // 代码清单7.26 使用委托属性把值存到map中
+        class Person7 {
+            private val _attributes = hashMapOf<String, String>()
+            fun setAttribute(attrName: String, value: String) {
+                _attributes[attrName] = value
+            }
+
+            // 把 map 作为委托属性
+            val name: String by _attributes
+        }
+
     }
 
     // 代码清单7.19 使用 PropertyChangeSupport 的工具类
