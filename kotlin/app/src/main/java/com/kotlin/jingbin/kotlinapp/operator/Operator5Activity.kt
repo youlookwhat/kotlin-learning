@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
 import java.beans.PropertyChangeListener
 import java.beans.PropertyChangeSupport
+import java.lang.reflect.Type
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
 /**
  * 7.5 重用属性访问的逻辑：委托属性
@@ -142,17 +145,144 @@ class Operator5Activity : AppCompatActivity() {
                 }
         }
 
-        val p2 = Person3("jingbin", 30, 40000)
+        val p3 = Person3("jingbin", 30, 40000)
         // 关联监听器，用于监听属性修改
-        p2.addPropertyChangeListener(PropertyChangeListener { it ->
+        p3.addPropertyChangeListener(PropertyChangeListener { it ->
             println("Property ${it.propertyName} changed" + "from ${it.oldValue} to ${it.newValue}")
         })
-        p2.age = 35 // Property age changed form 30 to 35
-        p2.salary = 60000 // Property salary changed form 40000 to 60000
+        p3.age = 35 // Property age changed form 30 to 35
+        p3.salary = 60000 // Property salary changed form 40000 to 60000
 
 
         // 代码清单7.21 提过辅助类来实现属性变化的通知
-        class ObservableProperty(val propName: String, var property: Int) {}
+        class ObservableProperty(val propName: String, var propValue: Int, val changeSupport: PropertyChangeSupport) {
+            fun getValue(): Int = propValue
+            fun setValue(newValue: Int) {
+                val oldValue = propValue
+                propValue = newValue
+                changeSupport.firePropertyChange(propName, oldValue, newValue)
+            }
+        }
+
+        class Person4(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
+            val _age = ObservableProperty("age", age, changeSupport)
+            var age: Int
+                get() = _age.getValue()
+                set(value) {
+                    _age.setValue(value)
+                }
+
+            val _salary = ObservableProperty("salary", salary, changeSupport)
+            var salary: Int
+                get() = _salary.getValue()
+                set(value) {
+                    _salary.setValue(value)
+                }
+        }
+        /*
+        * 你创建了一个保存属性值的类，并在修改属性时自动触发更改通知。你删除了重复的逻辑代码，但是需要相当多的样板代码来为每个属性创建
+        * ObservableProperty 实例，并把getter和setter委托给它。Kotlin的委托属性可以让你摆脱这些样板代码。
+        */
+
+        // 代码清单7.22 ObservableProperty 作为属性委托
+//        class ObservableProperty2(var propValue: Int, val changeSupport: PropertyChangeSupport) {
+//            operator fun getValue(p: Person5, prop: KProperty<*>): Int = propValue
+//            operator fun setValue(p: Person5, prop: KProperty<*>, newValue: Int) {
+//                val oldValue = propValue
+//                propValue = newValue
+//                changeSupport.firePropertyChange(prop.name, oldValue, newValue)
+//            }
+//        }
+
+        // 代码清单7.23 使用委托属性来绑定更改通知
+//        class Person5(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
+//            var age: Int by ObservableProperty2(age, changeSupport)
+//            var salary: Int by ObservableProperty2(salary, changeSupport)
+//        }
+
+        // 右边的对象被称为委托，Kotlin会自动将委托存储在隐藏的属性中，并在访问或修改属性时调用委托的geyValue，和setValue
+
+        // 代码清单7.24 使用Delegates.observable来实现属性修改的通知
+        class Person5(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
+            private val observer = { prop: KProperty<*>, oldValue: Int, newValue: Int ->
+                changeSupport.firePropertyChange(prop.name, oldValue, newValue)
+            }
+            var age: Int by Delegates.observable(age, observer)
+            var salary: Int by Delegates.observable(salary, observer)
+        }
+
+        /*
+        * by 右边的表达式不一定是新创建的实例，也可以是函数调用、另一个属性、或任何其他表达式，
+        * 只要这个表达式的值，是能够被编译器用正确的参数类型来调用getValue和setValue的对象。
+        */
+
+
+        /**-------------------- 7.5.4 委托属性的变换规则 ----------------------*/
+//        class C{
+//            var prop: Type by MyDelegate()
+//        }
+//        val c = C()
+
+        /*
+        * MyDelegate 实例会被保存到一个隐藏的属性中，它被称为<delegate>。编译器也会将用一个KProperty类型的对象来代表这个属性，它被称为<property>。
+        * 编译器生成的代码如下：
+        */
+//        class C {
+//            private val <delegate> = MyDelegate()
+//            var prop: Type
+//                get() = <delegate>.getValue(this, <property>)
+//                set(value:Type) = <delegate>.setValue(this,<property>,value)
+//        }
+
+        /*
+        * val x = c.prop  -> val x = <delegate>.getValue(c, <property>)
+        * c.prop = x      -> <delegate>.setValue(c, <property>, x)
+        */
+
+
+        /**-------------------- 7.5.5 在 map 中保存属性值 ----------------------*/
+        // 代码清单7.25 定义一个属性，把值存在map
+        class Person6 {
+            private val _attributes = hashMapOf<String, String>()
+            fun setAttribute(attrName: String, value: String) {
+                _attributes[attrName] = value
+            }
+
+            // 从map手动检索属性
+            val name: String
+                get() = _attributes["name"]!!
+        }
+
+    }
+
+    // 代码清单7.19 使用 PropertyChangeSupport 的工具类
+    open class PropertyChangeAware {
+
+        protected val changeSupport = PropertyChangeSupport(this)
+
+        fun addPropertyChangeListener(listener: PropertyChangeListener) {
+            changeSupport.addPropertyChangeListener(listener)
+        }
+
+        fun removePropertyChangeListener(listener: PropertyChangeListener) {
+            changeSupport.removePropertyChangeListener(listener)
+        }
+    }
+
+    // 代码清单7.22 ObservableProperty 作为属性委托
+    class ObservableProperty2(var propValue: Int, val changeSupport: PropertyChangeSupport) {
+        operator fun getValue(p: Person5, prop: KProperty<*>): Int = propValue
+        operator fun setValue(p: Person5, prop: KProperty<*>, newValue: Int) {
+            val oldValue = propValue
+            propValue = newValue
+            changeSupport.firePropertyChange(prop.name, oldValue, newValue)
+        }
+    }
+
+    // 代码清单7.23 使用委托属性来绑定更改通知
+    class Person5(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
+        var age: Int by ObservableProperty2(age, changeSupport)
+        var salary: Int by ObservableProperty2(salary, changeSupport)
     }
 
     companion object {
