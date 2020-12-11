@@ -22,7 +22,23 @@ class LambdaHigherActivity : AppCompatActivity() {
 
 
         /**-------------------- 8.1.1 函数类型 ----------------------*/
+        // Kotlin的类型推导
+        val sum = { x: Int, y: Int -> x + y }
+        val action = { println(42) }
 
+        // 这些变量的显示类型声明是什么样的？
+        // 有两个Int型参数和Int型返回值的函数
+        val sum2: (Int, Int) -> Int = { x, y -> x + y }
+        // 没有参数和返回值的函数
+        val action2: () -> Unit = { println(42) }
+
+        /*
+        * (Int, String) -> Unit
+        * 参数类型           返回类型
+        * 声明函数类型，需要将函数参数类型防在括号中，紧接着是一个箭头和函数的返回类型
+        */
+        // 标记函数类型返回值为可空类型：
+        var canReturnNull: (Int, Int) -> Int? = { x, y -> null }
     }
 
     companion object {
