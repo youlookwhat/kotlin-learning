@@ -295,5 +295,13 @@
             android:layout_height="wrap_content"
             android:text="声明高阶函数"
             android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_lambda_higher_2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内联函数：消除lambda带来的运行时开销"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

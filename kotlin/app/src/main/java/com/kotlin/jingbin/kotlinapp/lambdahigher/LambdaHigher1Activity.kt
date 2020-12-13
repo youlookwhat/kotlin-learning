@@ -9,7 +9,7 @@ import com.kotlin.jingbin.kotlinapp.R
 /**
  * 8.1 声明高阶函数
  * */
-class LambdaHigherActivity : AppCompatActivity() {
+class LambdaHigher1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -239,6 +239,7 @@ class LambdaHigherActivity : AppCompatActivity() {
         val contacts = listOf(Person("Dmitry", "bin", "188-1"),
                 Person("Jin", "been", null))
         val contactListFilters = ContactListFilters()
+        // 简化多次使用contactListFilters，apply会返回传入的对象
         with(contactListFilters) {
             prefix = "Dm"
             onlyWithPhoneNumber = true
@@ -296,7 +297,7 @@ class LambdaHigherActivity : AppCompatActivity() {
     companion object {
         fun start(context: Context) {
             val intent = Intent()
-            intent.setClass(context, LambdaHigherActivity::class.java)
+            intent.setClass(context, LambdaHigher1Activity::class.java)
             context.startActivity(intent)
         }
     }

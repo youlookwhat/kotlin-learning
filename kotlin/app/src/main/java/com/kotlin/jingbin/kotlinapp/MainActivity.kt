@@ -13,7 +13,8 @@ import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.lambda.*
-import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigherActivity
+import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher1Activity
+import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher2Activity
 import com.kotlin.jingbin.kotlinapp.operator.*
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem1Activity
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem2Activity
@@ -67,7 +68,8 @@ class MainActivity : AppCompatActivity() {
         bt_operator_5.setOnClickListener { Operator5Activity.start(this) }
 
         /**高阶函数：Lambda作为形参和返回值*/
-        bt_lambda_higher_1.setOnClickListener { LambdaHigherActivity.start(this) }
+        bt_lambda_higher_1.setOnClickListener { LambdaHigher1Activity.start(this) }
+        bt_lambda_higher_2.setOnClickListener { LambdaHigher2Activity.start(this) }
 
         kotlinDefine()
 
