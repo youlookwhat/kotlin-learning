@@ -245,8 +245,52 @@ class LambdaHigherActivity : AppCompatActivity() {
         }
         // 将 getPredicate 返回的函数作为参数传递给 filter 函数
         println(contacts.filter(contactListFilters.getPredicate()))
+
+
+        /**-------------------- 8.1.6 通过lambda去除重复代码 ----------------------*/
+        // 代码清单8.8 定义站点访问数据
+        data class SiteVisit(val path: String, val duration: Double, val os: Os)
+//        enum class Os { WINDOWS, LINUX, MAC, IOS, ANDROID }
+
+        val log = listOf(
+                SiteVisit("/", 34.0, Os.WINDOWS),
+                SiteVisit("/", 22.0, Os.MAC),
+                SiteVisit("/login", 12.0, Os.WINDOWS),
+                SiteVisit("/signup", 8.0, Os.IOS),
+                SiteVisit("/", 16.3, Os.ANDROID)
+        )
+
+        // 代码清单8.9 使用硬解码的过滤器分析站点访问数据
+        val average = log.filter { it.os == Os.WINDOWS }
+                .map(SiteVisit::duration)
+                .average()
+        println(average)// 23.0
+
+        // 代码清单8.10 用一个普通方法去除重复代码
+        fun List<SiteVisit>.averageDurationFor(os: Os) =
+                // 将重复代码抽取到函数中
+                filter { it.os == os }.map(SiteVisit::duration).average()
+        println(log.averageDurationFor(Os.WINDOWS))// 23.0
+        println(log.averageDurationFor(Os.MAC))// 22.0
+
+        // 代码清单8.11 用一个复杂的硬编码函数分析站点访问数据
+        val averageMobileDuration = log.filter { it.os in setOf(Os.IOS, Os.ANDROID) }.map(SiteVisit::duration).average()
+        println(averageMobileDuration)// 12.15
+
+        // 代码清单8.12 用一个高阶函数去除重复代码
+        fun List<SiteVisit>.averageDurationFor2(predicate: (SiteVisit) -> Boolean) =
+                filter(predicate).map(SiteVisit::duration).average()
+
+        println(log.averageDurationFor2 {
+            it.os in setOf(Os.ANDROID, Os.IOS)
+        })// 12.15
+        println(log.averageDurationFor2 {
+            it.os == Os.IOS && it.path == "/singup"
+        })
+
     }
 
+    enum class Os { WINDOWS, LINUX, MAC, IOS, ANDROID }
     enum class Delivery { STANDARD, EXPEDITED }
 
     companion object {
