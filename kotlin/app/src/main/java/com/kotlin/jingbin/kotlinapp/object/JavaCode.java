@@ -2,7 +2,10 @@ package com.kotlin.jingbin.kotlinapp.object;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class JavaCode implements Object2Activity.User9 {
@@ -81,5 +84,12 @@ public class JavaCode implements Object2Activity.User9 {
 
     public interface DataParser<T> {
         void parseData(String input, List<T> output, List<String> errors);
+    }
+
+    // 代码清单8.16 在Java中使用 try-with-resource
+    static String readFirstLineFromFile(String path) throws IOException {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
+            return bufferedReader.readLine();
+        }
     }
 }
