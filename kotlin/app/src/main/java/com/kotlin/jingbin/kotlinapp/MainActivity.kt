@@ -15,6 +15,7 @@ import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.lambda.*
 import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher1Activity
 import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher2Activity
+import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher3Activity
 import com.kotlin.jingbin.kotlinapp.operator.*
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem1Activity
 import com.kotlin.jingbin.kotlinapp.typesystom.TypeSystem2Activity
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         /**高阶函数：Lambda作为形参和返回值*/
         bt_lambda_higher_1.setOnClickListener { LambdaHigher1Activity.start(this) }
         bt_lambda_higher_2.setOnClickListener { LambdaHigher2Activity.start(this) }
+        bt_lambda_higher_3.setOnClickListener { LambdaHigher3Activity.start(this) }
 
         kotlinDefine()
 
