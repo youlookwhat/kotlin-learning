@@ -12,6 +12,7 @@ import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
 import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
+import com.kotlin.jingbin.kotlinapp.generic.Generic1Activity
 import com.kotlin.jingbin.kotlinapp.lambda.*
 import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher1Activity
 import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher2Activity
@@ -72,6 +73,9 @@ class MainActivity : AppCompatActivity() {
         bt_lambda_higher_1.setOnClickListener { LambdaHigher1Activity.start(this) }
         bt_lambda_higher_2.setOnClickListener { LambdaHigher2Activity.start(this) }
         bt_lambda_higher_3.setOnClickListener { LambdaHigher3Activity.start(this) }
+
+        /**泛型*/
+        bt_generic1.setOnClickListener { Generic1Activity.start(this) }
 
         kotlinDefine()
 
