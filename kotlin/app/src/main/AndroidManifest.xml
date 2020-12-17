@@ -51,6 +51,7 @@
         <activity android:name=".lambdahigher.LambdaHigher2Activity" />
         <activity android:name=".lambdahigher.LambdaHigher3Activity" />
         <activity android:name=".generic.Generic1Activity" />
+        <activity android:name=".generic.Generic2Activity" />
     </application>
 
 </manifest>
