@@ -57,8 +57,55 @@ class Generic2Activity : AppCompatActivity() {
 
 
         /**-------------------- 9.2.2 声明带实化类型参数的函数 ----------------------*/
+        // 内联函数的类型形参能够被实化，意味着你可以在运行时引用实际的类型实参。
+
+        // 代码清单9.7 声明带实化类型参数的函数
+//        inline fun <reified T> isA(value: Any) = value is T
+        println(isA<String>("abc"))// true
+        println(isA<String>(123))// false
+
+        // 代码清单9.8 使用标准库函数 filterInstance
+        val items = listOf("one", 2, "three")
+        println(items.filterIsInstance<String>())// [one,three]
+
+        // 代码清单9.9 filterInstance 的简化实现
+        // reified声明了类型参数不会在运行时被擦除
+//        inline fun <reified T>
+//                Iterable<*>.filterIsInstance(): List<T> {
+//            val destination = mutableListOf<T>()
+//            for (element in this) {
+//                // 可以检查元素是不是指定为类型实参的类的实例
+//                if (element is T) {
+//                    destination.add(element)
+//                }
+//            }
+//            return destination
+//        }
+
+        /*
+        *  为什么实化只对内联函数有效？
+        *  每次调用带实化类型参数的函数时，编译器都知道这次特定调用中用作类型实参的确切类型。
+        *  因此，编译器可以生成引用作为类型实参的具体类的字节码。
+        */
 
     }
+
+    // 代码清单9.9 filterInstance 的简化实现
+    // reified声明了类型参数不会在运行时被擦除
+    inline fun <reified T>
+            Iterable<*>.filterIsInstance(): List<T> {
+        val destination = mutableListOf<T>()
+        for (element in this) {
+            // 可以检查元素是不是指定为类型实参的类的实例
+            if (element is T) {
+                destination.add(element)
+            }
+        }
+        return destination
+    }
+
+    // 代码清单9.7 声明带实化类型参数的函数
+    inline fun <reified T> isA(value: Any) = value is T
 
     companion object {
         fun start(context: Context) {
