@@ -1,10 +1,13 @@
 package com.kotlin.jingbin.kotlinapp.generic
 
+import android.app.Activity
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
+import java.util.*
 
 /**
  * 9.2 运行时的泛型：擦除和实化类型参数
@@ -88,6 +91,27 @@ class Generic2Activity : AppCompatActivity() {
         *  因此，编译器可以生成引用作为类型实参的具体类的字节码。
         */
 
+        /**-------------------- 9.2.3 使用实化类型参数替代类引用 ----------------------*/
+        // 使用标准的 ServiceLoader Java API加载一个服务：
+        val serviceImpl = ServiceLoader.load(Service::class.java)
+        // ::class.java == Service.java 如何获取java.lang.Class对应的Kotlin类
+
+        // 使用带实化类型参数的函数重写这个例子
+        val serviceImpl2 = loadService<Service>()
+
+        startActivity<Generic2Activity>()
+
+    }
+
+    inline fun <reified T : Activity> Context.startActivity() {
+        // 把 T:class 当成类型参数的类访问
+        val intent = Intent(this, T::class.java)
+        startActivity(intent)
+    }
+
+    inline fun <reified T> loadService(): ServiceLoader<T> {
+        // 把 T::class 当成类型形参的类访问
+        return ServiceLoader.load(T::class.java)
     }
 
     // 代码清单9.9 filterInstance 的简化实现
