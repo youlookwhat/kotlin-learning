@@ -99,8 +99,28 @@ class Generic2Activity : AppCompatActivity() {
         // 使用带实化类型参数的函数重写这个例子
         val serviceImpl2 = loadService<Service>()
 
+        // 简化Android上的startActivity函数
+//        inline fun <reified T : Activity> Context.startActivity() {
+//            // 把 T:class 当成类型参数的类访问
+//            val intent = Intent(this, T::class.java)
+//            startActivity(intent)
+//        }
         startActivity<Generic2Activity>()
 
+        /**-------------------- 9.2.4 实化类型参数的限制 ----------------------*/
+        /*
+        * 具体来说，可以按下面的方式使用实化类型参数：
+        *  - 用在类型检查和类型转换中 (is、!is、as、as?)
+        *  - 使用Kotlin反射API，我们将在第10章讨论 (::class)
+        *  - 获取相应的 java.lang.Class(::class.java)
+        *  - 作为调用其他函数的类型实参
+        *
+        * 不能做下面的事情：
+        *  - 创建指定为类型参数的类的实例
+        *  - 调用类型参数类的伴生对象的方法
+        *  - 调调用带实化类型参数函数的时候使用非实化类型形参作为类型实参
+        *  - 把类、属性或者非内联函数的类型参数标记为reified
+        */
     }
 
     inline fun <reified T : Activity> Context.startActivity() {
