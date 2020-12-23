@@ -14,6 +14,7 @@ import com.kotlin.jingbin.kotlinapp.basis.whilefor.WhileForActivity
 import com.kotlin.jingbin.kotlinapp.function.SetOfActivity
 import com.kotlin.jingbin.kotlinapp.generic.Generic1Activity
 import com.kotlin.jingbin.kotlinapp.generic.Generic2Activity
+import com.kotlin.jingbin.kotlinapp.generic.Generic3Activity
 import com.kotlin.jingbin.kotlinapp.lambda.*
 import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher1Activity
 import com.kotlin.jingbin.kotlinapp.lambdahigher.LambdaHigher2Activity
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
         /**泛型*/
         bt_generic1.setOnClickListener { Generic1Activity.start(this) }
         bt_generic2.setOnClickListener { Generic2Activity.start(this) }
+        bt_generic3.setOnClickListener { Generic3Activity.start(this) }
 
         kotlinDefine()
 

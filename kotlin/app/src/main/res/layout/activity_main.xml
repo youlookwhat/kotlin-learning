@@ -335,5 +335,13 @@
             android:layout_height="wrap_content"
             android:text="运行时的泛型：擦除和实化类型参数"
             android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_generic3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="变型：泛型和子类型化"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

@@ -18,7 +18,7 @@ class Generic2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generic1)
 
-        title = "9.1 运行时的泛型：擦除和实化类型参数"
+        title = "9.2 运行时的泛型：擦除和实化类型参数"
 
         /**-------------------- 9.2.1 运行时的泛型：类型检查和转换 ----------------------*/
         // 和Java一样，Kotlin的泛型在运行时也被擦除了。
