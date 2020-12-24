@@ -179,7 +179,7 @@ class Generic3Activity : AppCompatActivity() {
         enumerateCats(Animal::getIndex)
 
         /**-------------------- 9.3.5 使用点变型：在类型出现的地方指定变型 ----------------------*/
-
+        // Kotlin的声明点变型 vs .Java 通配符
     }
 
     // 一个类可以在一个类型参数上协变，同时在另一个类型参数上逆变。
