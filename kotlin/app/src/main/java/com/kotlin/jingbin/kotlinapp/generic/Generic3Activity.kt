@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlin.jingbin.kotlinapp.R
+import kotlin.random.Random
+import kotlin.reflect.KClass
 
 /**
  * 9.3 变型：泛型很子类型化
@@ -25,7 +27,7 @@ class Generic3Activity : AppCompatActivity() {
         printContents(listOf("abc", "bac"))// abc,bac
 
         // 修改列表
-        fun addAnswer(list: MutableList<Any>) {
+        fun addAnswer(list: MutableList2<Any>) {
             list.add(42)
         }
 
@@ -179,8 +181,185 @@ class Generic3Activity : AppCompatActivity() {
         enumerateCats(Animal::getIndex)
 
         /**-------------------- 9.3.5 使用点变型：在类型出现的地方指定变型 ----------------------*/
-        // Kotlin的声明点变型 vs .Java 通配符
+        /*
+        * 声明点变型带来了更简洁的代码，因为只用指定一次变型修饰符，所有这个类的使用者都不用再考虑这些了。
+        *
+        * Kotlin的声明点变型 vs .Java 通配符
+        * // java
+        * public interface Stream<T> {
+        *   <R> Stream<R> map(Function<? super T, ? extends R> mapper);
+        * }
+        */
+
+        // 代码清单9.14 带不变型类型参数的数据拷贝函数
+        fun <T> copyData(source: kotlin.collections.MutableList<T>, destination: kotlin.collections.MutableList<T>) {
+            for (item in source) {
+                destination.add(item)
+            }
+        }
+
+        // 代码清单9.15 带不变类型参数的数据拷贝函数
+        fun <T : R, R> copyData2(source: kotlin.collections.MutableList<T>, destination: kotlin.collections.MutableList<R>) {
+            for (item in source) {
+                destination.add(item)
+            }
+        }
+
+        val ints = mutableListOf(1, 2, 3)
+        val anyItems = mutableListOf<Any>()
+        copyData2(ints, anyItems)
+        println(anyItems)// [1,2,3]
+
+
+        // 在函数定义中给特定用途的类型参数加上变型修饰符
+
+        // 代码清单9.16 带 out 投影类型参数的数据拷贝函数
+        // 可以给类型的用法加上 out 关键字：没有使用那些 T 用在 in 位置的方法
+        fun <T> copyData3(source: kotlin.collections.MutableList<out T>, destination: kotlin.collections.MutableList<T>) {
+            for (item in source) {
+                destination.add(item)
+            }
+        }
+
+        // 加上 out 禁止调用 add。不要为使用投影类型后不能调用某些方法而吃惊
+        val list: kotlin.collections.MutableList<out Number> = mutableListOf(1, 2, 3)
+//        list.add(42)
+
+        // 代码清单9.17 带 in 投影类型参数的数据拷贝函数
+        // 允许目标元素的类型是来源元素类型的超类型
+        fun <T> copyData4(source: kotlin.collections.MutableList<T>, destination: kotlin.collections.MutableList<in T>) {
+            for (item in source) {
+                destination.add(item)
+            }
+        }
+
+        /*
+        * 注意：
+        * Kotlin的使用点变型直接对应Java的限界通配符。
+        * Kotlin中的 MutableList<out T> 和 Java中的 MutableList<? extends T> 是一个意思。
+        * in 投影的 MutableList<in T> 对应到Java的 MutableList<? super T>
+        */
+
+        /**-------------------- 9.3.6 星号投影：使用 * 代替类型参数 ----------------------*/
+        // 注意：MutableList<*> 和 MutableList<Any?> 不一样
+        val list2: MutableList<Any?> = mutableListOf("a", 1, "qwe")
+        val chars = mutableListOf('a', 'b', 'c')
+        val unknownElements: MutableList<*> = if (java.util.Random().nextBoolean()) list2 else chars
+
+//        unknownElements.add(42)// 编译器禁止调用这个方法
+        println(unknownElements.first())// 读取元素是安全的：first() 返回一个类型为 Any? 的元素
+        // MutableList<*> 投影成了 MutableList<out Any?>
+
+
+        /*可以实现一个接收 List<*> 做参数的 printFirst 函数：*/
+
+        // 每一种列表都是可能的实参
+        fun printFirst(list: List<*>) {
+            // isNotEmpty() 没有使用泛型类型参数
+            if (list.isNotEmpty()) {
+                // first() 现在返回的是 Any?,但是这里足够了
+                println(list.first())
+            }
+        }
+        printFirst(listOf("jingbin", "jinbeen"))// jingbin
+
+        /*在使用点变型的情况下，你有一个替代方案---引入一个泛型类型参数：*/
+        // 再一次，每一种列表都是可能的实参
+        fun <T> printFirst(list: List<T>) {
+            if (list.isNotEmpty()) {
+                // first() 现在返回的是T的值
+                println(list.first())
+            }
+        }
+
+        /*
+        * 星号投影的语法很简洁，但只能用在对泛型类型实参的确切值不感兴趣的地方：
+        * 只是使用生产值的地方，而且不关心那些值的类型。
+        */
+
+        // 代码清单9.18 输入验证的接口
+        // 接口定义成在 T 上逆变
+//        interface FieldValidator<in T> {
+        // T 只在 in 位置使用(这个方法只是消费T的值)
+//            fun validate(input: T): Boolean
+//        }
+
+//        object DefaultIntValidator : FieldValidator<Int> {
+//            override fun validate(input: Int): Boolean = input >= 0
+//        }
+
+//        object DefaultStringValidator : FieldValidator<String> {
+//            override fun validate(input: String): Boolean = input.isNotEmpty()
+//        }
+
+
+        val validators = mutableMapOf<KClass<*>, FieldValidator<*>>()
+        validators[String::class] = DefaultStringValidator
+        validators[Int::class] = DefaultIntValidator
+        /*
+        * 如果这样做了，尝试使用验证器的时候就会遇到困难。不能用类型为 FieldValidator<*> 的验证器来验证字符串。
+        * 这是不安全的，因为编译器不知道它是哪种验证器：
+        */
+        // 存储在map中的值的类型是 FieldValidator<*>
+//        validators[String::class]!!.validate("")
+
+        // 代码清单9.19 使用显式的转换获取验证器
+        val stringValidator = validators[String::class] as FieldValidator<String>// 警告：未受检的转换
+        println(stringValidator.validate(""))// false
+
+
+        // 代码清单9.20 错误地获取验证器
+        val fieldValidator = validators[Int::class] as FieldValidator<String>
+        // 代码可以编译，直到使用验证器时才发现真正的错误。
+//        println(fieldValidator.validate(""))
+
+        // 代码清单9.21 封装对验证器集合的访问
+//        object Validators {
+        // 使用和之前一样的map，但现在无法在外部访问它
+//            private val validators = mutableMapOf<KClass<*>, FieldValidator<*>>()
+//            fun <T : Any> registerValidator(kClass: KClass<T>, fieldValidator: FieldValidator<T>) {
+//                validators[kClass] = fieldValidator
+//            }
+
+//            @Suppress("UNCHECKED_CAST")// 禁止关于未受检的转换到 FieldValidator<T>的警告
+//            operator fun <T : Any> get(kClass: KClass<T>): FieldValidator<T> =
+//                    validators[kClass] as? FieldValidator<T>
+//                            ?: throw IllegalArgumentException("No validator for ${kClass.simpleName}")
+//        }
+
+        //  现在 get 方法返回的是 FieldValidator<String>的实例。会提示报错
+//        println(Validators[String::class].validate(42))
     }
+
+    // 代码清单9.21 封装对验证器集合的访问
+    object Validators {
+        // 使用和之前一样的map，但现在无法在外部访问它
+        private val validators = mutableMapOf<KClass<*>, FieldValidator<*>>()
+        fun <T : Any> registerValidator(kClass: KClass<T>, fieldValidator: FieldValidator<T>) {
+            validators[kClass] = fieldValidator
+        }
+
+        @Suppress("UNCHECKED_CAST")// 禁止关于未受检的转换到 FieldValidator<T>的警告
+        operator fun <T : Any> get(kClass: KClass<T>): FieldValidator<T> =
+                validators[kClass] as? FieldValidator<T>
+                        ?: throw IllegalArgumentException("No validator for ${kClass.simpleName}")
+    }
+
+    // 代码清单9.18 输入验证的接口
+    // 接口定义成在 T 上逆变
+    interface FieldValidator<in T> {
+        // T 只在 in 位置使用(这个方法只是消费T的值)
+        fun validate(input: T): Boolean
+    }
+
+    object DefaultIntValidator : FieldValidator<Int> {
+        override fun validate(input: Int): Boolean = input >= 0
+    }
+
+    object DefaultStringValidator : FieldValidator<String> {
+        override fun validate(input: String): Boolean = input.isNotEmpty()
+    }
+
 
     // 一个类可以在一个类型参数上协变，同时在另一个类型参数上逆变。
     interface Function1<in P, out R> {
@@ -193,7 +372,7 @@ class Generic3Activity : AppCompatActivity() {
     }
 
     // MutableList 不能在T上声明成协变的
-    interface MutableList<T> : List<T>, MutableCollection<T> {
+    interface MutableList2<T> : List<T>, MutableCollection<T> {
         // 因为T用在了 in 的位置
         override fun add(element: T): Boolean
     }
