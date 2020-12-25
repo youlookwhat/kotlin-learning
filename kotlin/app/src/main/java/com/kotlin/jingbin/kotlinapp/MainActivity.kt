@@ -7,6 +7,7 @@ import com.kotlin.jingbin.kotlinapp.`object`.Object1Activity
 import com.kotlin.jingbin.kotlinapp.`object`.Object2Activity
 import com.kotlin.jingbin.kotlinapp.`object`.Object3Activity
 import com.kotlin.jingbin.kotlinapp.`object`.Object4Activity
+import com.kotlin.jingbin.kotlinapp.annotations.AnnotationsReflection1Activity
 import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
@@ -80,6 +81,9 @@ class MainActivity : AppCompatActivity() {
         bt_generic1.setOnClickListener { Generic1Activity.start(this) }
         bt_generic2.setOnClickListener { Generic2Activity.start(this) }
         bt_generic3.setOnClickListener { Generic3Activity.start(this) }
+
+        /**注解与反射*/
+        bt_annotation1.setOnClickListener { AnnotationsReflection1Activity.start(this) }
 
         kotlinDefine()
 

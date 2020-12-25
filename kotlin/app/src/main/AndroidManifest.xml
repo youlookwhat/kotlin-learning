@@ -52,6 +52,7 @@
         <activity android:name=".lambdahigher.LambdaHigher3Activity" />
         <activity android:name=".generic.Generic1Activity" />
         <activity android:name=".generic.Generic2Activity" />
+        <activity android:name=".annotations.AnnotationsReflection1Activity" />
     </application>
 
 </manifest>

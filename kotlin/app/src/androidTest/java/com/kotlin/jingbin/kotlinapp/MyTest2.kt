@@ -24,4 +24,8 @@ class MyTest2 {
         // 不需要null检查直接访问属性
         Assert.assertEquals("foo", myService.performAction())
     }
+
+    @Test(timeout = 100L)
+    fun testMethod() {
+    }
 }
