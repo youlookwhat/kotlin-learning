@@ -33,6 +33,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    // 只有使用Kotlin反射才用到
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.4.20")
 }
 repositories {
     mavenCentral()
