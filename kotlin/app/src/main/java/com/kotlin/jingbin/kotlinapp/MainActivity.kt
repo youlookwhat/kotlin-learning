@@ -8,6 +8,7 @@ import com.kotlin.jingbin.kotlinapp.`object`.Object2Activity
 import com.kotlin.jingbin.kotlinapp.`object`.Object3Activity
 import com.kotlin.jingbin.kotlinapp.`object`.Object4Activity
 import com.kotlin.jingbin.kotlinapp.annotations.AnnotationsReflection1Activity
+import com.kotlin.jingbin.kotlinapp.annotations.AnnotationsReflection2Activity
 import com.kotlin.jingbin.kotlinapp.basis.classproperty.PersonActivity
 import com.kotlin.jingbin.kotlinapp.basis.enumwhen.whencode.WhenActivity
 import com.kotlin.jingbin.kotlinapp.basis.trycatch.TryCatchActivity
@@ -84,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         /**注解与反射*/
         bt_annotation1.setOnClickListener { AnnotationsReflection1Activity.start(this) }
+        bt_annotation2.setOnClickListener { AnnotationsReflection2Activity.start(this) }
 
         kotlinDefine()
 

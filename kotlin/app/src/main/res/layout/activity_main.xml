@@ -359,5 +359,13 @@
             android:layout_height="wrap_content"
             android:text="声明并应用注解"
             android:textAllCaps="false" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_annotation2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="反射：在运行时对Kotlin对象进行自身"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>
